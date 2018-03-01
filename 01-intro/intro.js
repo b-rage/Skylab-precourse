@@ -51,8 +51,8 @@ if(myName !== 'Gianluca' && myAge !== 46) {
 
 var data2 = ['Gianluca', 'tony', 33, 'Bragaglia', 38, 46, 'mark', ];
 for(i=0; i<data2.length; i++) {
-    if(data2[i] == 'Gianluca' && data2[i] == 'Bragaglia' && data2[i] == 46) {
-        console.log("We find your data!" );
+    if(data2[i] == 'Gianluca' || data2[i] == 'Bragaglia' || data2[i] == 46) {
+        console.log("We find your data! " + data2[i]);
         
     }
 }
