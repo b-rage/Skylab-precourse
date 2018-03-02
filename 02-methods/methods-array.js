@@ -13,41 +13,62 @@ var myName =  n[0][9] + '|' + n[0][10] + '|' + n[0][11] + '|' + n[0][12] + '|' +
 console.log(myName) // S|T|A|R|K
 
 //c) Ahora muestra cada letra de tu nombre con su posición (necesitarás un bucle for)
-var myName = [];
+
 for(var i=0; i<8 ; i++) {
-    myName.push(i+1 + 'º' + ' ' + n[0][i]);
+    console.log(i+1 + 'º' + ' ' + n[0][i]);
 }
 
-console.log(myName) // 1º T, 2º O, 3º N, 4º Y
+// 1º T, 2º O, 3º N, 4º Y
 
 //Resource: https://www.w3schools.com/jsref/jsref_split.asp
 
 //d)Como en el ejercicio anterior, pero seleccionando tu apellido
-var myLastName = [];
+
 for(var i=9; i<=17; i++) {
-    myLastName.push(i + 'º' + ' ' + n[0][i]);
+    console.log(i + 'º' + ' ' + n[0][i]);
 }
-console.log(myLastName) // 5º S, 6º T, 7º A, 8º R, 9º K
+ // 5º S, 6º T, 7º A, 8º R, 9º K
 //Resource: https://www.w3schools.com/jsref/jsref_length_array.asp
 
 //e) Puedes indicarme las iniciales de tu nombre y apellido? Como en el ejercicio h de la sección de strings
 var myInitials = n[0][0] + '.' + n[0][9];
 console.log(myInitials) // T.S
-/*
+
 //f) Ahora, reformula la array, introduciendo tu nombre en primera posición, tu apellido en segunda, y además añade en otra posicion tu edad. Muestra por pantalla solo tu nombre y tu edad en un solo mensaje.
+var n2 = ['Gianluca', 'Bragaglia', 46];
 
-console.log(mySelector) // My name is TONY and i'm 40 years old
+console.log("My name is " + n2[0].toUpperCase() + " and i'm " + n2[2] + " years old") // My name is TONY and i'm 40 years old
+
 //g) Prepara una función para añadir tu City a la array, muestra un mensaje mostrando el contenido de toda la array, así aseguraremos los cambios.
+function addCity(myCity) {
+    n2.push(myCity);
+    console.log('City added to array! => ' + n2);
+}
+addCity('Barcelona');
+ // City added to array! => Tony, Stark, 40, New York
 
-console.log(myCityAdd) // City added to array! => Tony, Stark, 40, New York
 //h) Crea ahora, una funcion para eliminar la variable City y asegura los cambios.
-
-myCityAdd() // City added to array! => Tony, Stark, 40, New York
+function myCityDelete() {
+    
+    n2.splice(3,1);
+    console.log('City deleted! => ' + n2);
+    
+}
+addCity() // City added to array! => Tony, Stark, 40, New York
 myCityDelete() // City deleted! => Tony, Stark, 40
+
+
 //j) Ahora, elimina el nombre y asegura los cambios Resources: https://www.w3schools.com/jsref/jsref_shift.asp
 
-//k) Quiero volver a introducir mi nombre pero si lo introduzco utilizando push() estará en la última posición, como podria hacer para introducirlo en la primera posición? Resources: https://www.w3schools.com/jsref/jsref_splice.asp
+n2.shift();
+console.log(n2);
 
+
+//k) Quiero volver a introducir mi nombre pero si lo introduzco utilizando push() estará en la última posición, como podria hacer para introducirlo en la primera posición? Resources: https://www.w3schools.com/jsref/jsref_splice.asp
+n2.splice(0, 0,' Gianluca');
+console.log(n2);
+
+/*
 //l) Ahora, declara una array con los números del 0 a 10 y muestra cada número multiplicado por dos.
 
 numbers = [...]
