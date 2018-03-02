@@ -2,32 +2,38 @@
 //a) Declara tu nombre completo en una array y muéstralo por pantalla separando cada letra por "/"
 
 var n = ['GIANLUCA BRAGAGLIA'];
-var myName = n[0][0] + '/' + n[0][1] + '/' + n[0][2];
-
-
+var myName = n[0][0] + '/' + n[0][1] + '/' + n[0][2] + '/' + n[0][3] + '/' + n[0][4] + '/' + n[0][5] + '/' + n[0][6] + '/' + n[0][7] + '/' + n[0][9] + '/' + n[0][10] + '/' + n[0][11] + '/' + n[0][12] + '/' + n[0][13] + '/' + n[0][14] + '/' + n[0][15] + '/' + n[0][16] + '/' + n[0][17] ;
 
 
 
 console.log(myName) // T/O/N/Y/S/T/A/R/K
-/*
-//b) Ahora solo selecciona tu apellido y muestra cada letra separada por "|"
 
+//b) Ahora solo selecciona tu apellido y muestra cada letra separada por "|"
+var myName =  n[0][9] + '|' + n[0][10] + '|' + n[0][11] + '|' + n[0][12] + '|' + n[0][13] + '|' + n[0][14] + '|' + n[0][15] + '|' + n[0][16] + '|' + n[0][17] ;
 console.log(myName) // S|T|A|R|K
 
 //c) Ahora muestra cada letra de tu nombre con su posición (necesitarás un bucle for)
+var myName = [];
+for(var i=0; i<8 ; i++) {
+    myName.push(i+1 + 'º' + ' ' + n[0][i]);
+}
 
 console.log(myName) // 1º T, 2º O, 3º N, 4º Y
 
 //Resource: https://www.w3schools.com/jsref/jsref_split.asp
 
 //d)Como en el ejercicio anterior, pero seleccionando tu apellido
-
+var myLastName = [];
+for(var i=9; i<=17; i++) {
+    myLastName.push(i + 'º' + ' ' + n[0][i]);
+}
 console.log(myLastName) // 5º S, 6º T, 7º A, 8º R, 9º K
 //Resource: https://www.w3schools.com/jsref/jsref_length_array.asp
 
 //e) Puedes indicarme las iniciales de tu nombre y apellido? Como en el ejercicio h de la sección de strings
-
+var myInitials = n[0][0] + '.' + n[0][9];
 console.log(myInitials) // T.S
+/*
 //f) Ahora, reformula la array, introduciendo tu nombre en primera posición, tu apellido en segunda, y además añade en otra posicion tu edad. Muestra por pantalla solo tu nombre y tu edad en un solo mensaje.
 
 console.log(mySelector) // My name is TONY and i'm 40 years old
