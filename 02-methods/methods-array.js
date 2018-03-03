@@ -68,25 +68,55 @@ console.log(n2);
 n2.splice(0, 0,' Gianluca');
 console.log(n2);
 
-/*
+
 //l) Ahora, declara una array con los números del 0 a 10 y muestra cada número multiplicado por dos.
 
-numbers = [...]
-var multByTwo = numbers.map(...)
+
+var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+var multByTwo = numbers.map(function(num) {
+  return num * 2;
+});
+console.log(multByTwo);
+
+
+
 //l1) Reformula la función para que puedas especificar por cual número debería multiplicar cada elemento de la array.
 
 var num = 3; // cada número se multiplicará por 3
-function multByNum(num){
-    var arrayMult = numbers.map(...)
-    return arrayMult
+function multByNum(){
+    var arrayMult = numbers.map(function(nums) {
+        return nums * num;
+      })
+      console.log(arrayMult);
+      function myFunction() {
+        arrayMult.sort(function(a, b){return b-a});
+        console.log(arrayMult);
+    }
+    myFunction();
+      
 }
+  multByNum();
+
+  
+  
 //Resource: https://www.w3schools.com/jsref/jsref_map.asp
 
 //m) Podrías mostrarlos en el orden inverso? Resources: https://www.w3schools.com/jsref/jsref_sort.asp
 
-//n) Puedes indicarme que letras se repiten de tu nombre y cuantas veces?
+function myFunction() {
+    arrayMult.sort(function(a, b){return b-a});
+    
+}
 
-console.log(repeatLetters) // Tony Stark, the letter 'T' => 2 times.
+
+
+//n) Puedes indicarme que letras se repiten de tu nombre y cuantas veces?
+var string = 'Tony Stark';
+
+console.log(string + ", the letter 'T' => " + (string.match(/t/gi).length) + " times");
+// Tony Stark, the letter 'T' => 2 times.
+
 //n1) Ahora muestra por consola que letras NO se repiten y muestra tu nombre sin esas letras
 
+/*
 console.log(repeatLetters) // Tony Stark, the letters => o, n, y, s, a, r, k are not repeated, the name is => Ony Sark */
