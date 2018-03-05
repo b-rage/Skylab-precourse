@@ -31,7 +31,7 @@ function calculatorPro() {
 
 
     }
-    if (isNaN(arguments[num]) === true || arguments[num] == undefined) {
+    if (isNaN(arguments[num]) === true || arguments[num] == undefined || arguments[num] == 0) {
         console.log('tienes que introducir numeros');
     } else if (arguments.length == 1) {
         console.log('La raiz cuandrada del numero introducico es ' + Math.sqrt(arguments[0]).toFixed(3));
@@ -42,14 +42,14 @@ function calculatorPro() {
 
 }
 
-calculatorPro(4,7,5);
-/*calculator(0);
-calculator();
-calculator(0, 0);
-calculator("Pepe");
-calculator("Pepe", "Antonio");
-calculator("Pepe", 0);
-calculator(0.0, 0);
-calculator(0, "Pepe");
-calculator(54);
-calculator(3, 8);*/
+//calculatorPro(4,7,5); //ok
+//calculatorPro(0);     //ok
+//calculatorPro();      // ok
+//calculatorPro(0, 0);  //ok
+//calculatorPro("Pepe"); // ok
+calculatorPro("Pepe", "Antonio");  //ok
+calculatorPro("Pepe", 0);          //ok
+calculatorPro(1.0, 0);
+calculatorPro(0, "Pepe");
+calculatorPro(54);
+calculatorPro(3, 8);/**/
