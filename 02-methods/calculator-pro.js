@@ -23,11 +23,13 @@ prompt("New numbers? y/n")
 function calculatorPro() {
     var sum = 0;
     var rest = arguments[0] * 2;
-    var multi = 0;
-    var divide = 0;
+    var multi = 1;
+    var divide = arguments[0] * arguments[0];
     for (num in arguments) {
         sum += arguments[num];
         rest -= arguments[num];
+        multi *= arguments[num];
+        divide /= arguments[num];
 
 
     }
@@ -42,14 +44,14 @@ function calculatorPro() {
 
 }
 
-//calculatorPro(4,7,5); //ok
-//calculatorPro(0);     //ok
-//calculatorPro();      // ok
-//calculatorPro(0, 0);  //ok
-//calculatorPro("Pepe"); // ok
-calculatorPro("Pepe", "Antonio");  //ok
-calculatorPro("Pepe", 0);          //ok
+calculatorPro(18,3,2); 
+calculatorPro(0);     
+calculatorPro();      
+calculatorPro(0, 0);  
+calculatorPro("Pepe"); 
+calculatorPro("Pepe", "Antonio");  
+calculatorPro("Pepe", 0);          
 calculatorPro(1.0, 0);
 calculatorPro(0, "Pepe");
 calculatorPro(54);
-calculatorPro(3, 8);/**/
+calculatorPro(3, 8);
