@@ -18,7 +18,9 @@ prompt("New numbers? y/n")
                 //Output => sum1, subs1, mult1, div1, sum2, subs2, mult2, div2...
     Case "n" => "Bye!"
 
-*/
+
+
+//PART 1 OK!!
 
 function calculatorPro() {
     var sum = 0;
@@ -55,3 +57,54 @@ calculatorPro(1.0, 0);
 calculatorPro(0, "Pepe");
 calculatorPro(54);
 calculatorPro(3, 8);
+
+
+PART 2
+
+*/
+
+function calculatorPro() {
+    var sum = 0;
+    var rest = arguments[0] * 2;
+    var multi = 1;
+    var divide = arguments[0] * arguments[0];
+    for (num in arguments) {
+        sum += arguments[num];
+        rest -= arguments[num];
+        multi *= arguments[num];
+        divide /= arguments[num];
+    }
+    if (isNaN(arguments[num]) === true || arguments[num] == undefined || arguments[num] == 0) {
+        console.log('tienes que introducir numeros');
+    } else if (arguments.length == 1) {
+        console.log('La raiz cuandrada del numero introducico es ' + Math.sqrt(arguments[0]).toFixed(3));
+
+    } else {
+        console.log('La suma de los numeros introducidos es ' + sum.toFixed(3) + ', la resta es ' + rest.toFixed(3) + ' la multiplicación es ' + multi.toFixed(3) + ' la división es ' + divide);
+    }
+
+}
+
+calculatorPro(18, 3, 2);
+calculatorPro(0);
+calculatorPro();
+calculatorPro(0, 0);
+calculatorPro("Pepe");
+calculatorPro("Pepe", "Antonio");
+calculatorPro("Pepe", 0);
+calculatorPro(1.0, 0);
+calculatorPro(0, "Pepe");
+calculatorPro(54);
+calculatorPro(3, 8);
+
+var choice = prompt('quieres hacer otras operaciones?  y/n');
+
+switch (choice) {
+    case 'y':
+        calculatorPro(23, 7, 8);
+        break;
+    case 'n':
+        console.log('Bye bye!');
+        break;
+        
+}
