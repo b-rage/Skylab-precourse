@@ -114,7 +114,7 @@ function myFunction() {
 var str = 'Tony Stark';
 var letr = [];
 for (var i = 0; i < str.length; i++) {
-    letr.push(str[i].toUpperCase());  // array with letters of str
+    letr.push(str[i].toUpperCase());  // array with letters of str uppercase
 }
 
 
@@ -126,14 +126,13 @@ for (var i = 0; i < letras.length - 1; i++) {  // find duplicate letters
 
     if (letras[i + 1] == letras[i]) {
 
-        results.push(letras[i]); 
-        results.push(letras[i + 1]); 
+        results.push(letras[i]);
+        results.push(letras[i + 1]);
 
     }
-} 
+}
 
 
-console.log(letras);
 
 console.log(str + ", the letter ' " + results[0] + " ' => " + (str.match(/t/gi).length) + " times");
 // Tony Stark, the letter 'T' => 2 times.
@@ -145,11 +144,11 @@ console.log(str + ", the letter ' " + results[0] + " ' => " + (str.match(/t/gi).
 
 var letr2 = [];
 for (var i = 0; i < str.length; i++) {
-    letr2.push(str[i]);  // array with letters of str
+    letr2.push(str[i]);  // array with letters of str normal case
 }
 
-for(var e = 0; e < letr2.length; e++) {
-    if(letr2[e] == results[0] || letr2[e] == results[0].toLowerCase() || letr2[e] == ' ') {
+for (var e = 0; e < letr2.length; e++) {
+    if (letr2[e] == results[0] || letr2[e] == results[0].toLowerCase() || letr2[e] == ' ') {
         letr2.splice(e, 1);
     }
 }
