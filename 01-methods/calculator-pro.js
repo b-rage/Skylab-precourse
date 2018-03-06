@@ -98,13 +98,28 @@ calculatorPro(54);
 calculatorPro(3, 8);
 
 var choice = prompt('quieres hacer otras operaciones?  y/n');
+var choiceM = choice.toUpperCase();
+if (choiceM !== 'Y' || choiceM !== 'N') {
+    console.log('tienes que escribir y o n');
+    choice = prompt('quieres hacer otras operaciones?  y/n');
+    choiceM = choice.toUpperCase();
+    switch (choiceM) {
+        case 'Y':
+            calculatorPro(23, 7, 8);
+            break;
+        case 'N':
+            console.log('Bye bye!');
+            break;
+    }
+}else{
+    switch (choiceM) {
+        case 'Y':
+            calculatorPro(23, 7, 8);
+            break;
+        case 'N':
+            console.log('Bye bye!');
+            break;
 
-switch (choice) {
-    case 'y':
-        calculatorPro(23, 7, 8);
-        break;
-    case 'n':
-        console.log('Bye bye!');
-        break;
-        
+
+    }
 }
