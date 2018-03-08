@@ -50,11 +50,11 @@ console.log('New class = ' + avenger.class); //new class = XI
 
 //d) Ahora, elimina la propiedad ID y asegura los cambios.
 function removeID() {
-    delete avenger.ID;
-    console.log(avenger.ID) //Not exist :(
+    delete avenger.id;
+    
 }
 removeID();
-
+console.log(avenger) //Not exist :(
 //e) Añade una nueva propiedad, por ejemplo city y dale un valor.
 avenger.city = 'New York';
 //http://www.w3schools.com/js/js_properties.asp
@@ -71,7 +71,10 @@ console.log(Object.keys(avenger).length);
 //g) Cambia la propiedad name por fullName.
 avenger.fullName = avenger.name + ' Stark';
 delete avenger.name;
-
+delete avenger.city;
+delete avenger.class;
+avenger.class = 'XI';
+avenger.city = 'New York';
 //g1) Asegura los cambios.
 
 console.log(avenger.fullName) // Tony Stark
@@ -82,12 +85,20 @@ for(prop in avenger) {
     
 }
 // "Hi there, I'm Tony Stark..."
-/*
+console.log('--------');
+
 //h1) Añade más propiedades al objeto, como... markAverage, country, job, studies...
-
+avenger.markAverage = '23';
+avenger.country = 'USA';
+avenger.job = 'Developer';
+avenger.studies = 'PhD';
 //h2) Asegura los cambios volviendo a listar los valores del objeto
+for(prop in avenger) {
+    console.log(avenger[prop]);
+    
+}
 
-console.log(location) // NYC
+/*
 //i) Crea un constructor de objetos llamado "Avenger", al cual le pasarás ciertos parametros, creando una instancia del objeto con las propiedades de nuestro objeto creado. (Échale un ojo a la referencia de abajo.)
 /*
 http://www.w3schools.com/js/js_object_definition.asp
@@ -102,9 +113,32 @@ function avenger(fullName, classRoom, city, job, studies,markAv) {
     this.studies= studies;
     this.markAv = markAv;
 }
-var tonyStark = new avenger ("Tony Stark", "XI", "NYC", "Ingeneer", "MIT", 10)
-console.log(tonyStark)*/
+var tonyStark = new avenger ("Tony Stark", "XI", "NYC", "Ingeneer", "MIT", 10)*/
+function myAvenger(fullName, classRoom, city, job, studies,markAv) {
+
+    this.fullName = fullName;
+    this.classRoom = classRoom;
+    this.city = city;
+    this.job= job;
+    this.studies= studies;
+    this.markAv = markAv;
+    this.listProperties = function(){
+        console.log(this.fullName + ", " + this.classRoom +', ' + this.city + ', ' + this.job + ', ' + this.studies + ', ' + this.markAv) 
+    }
+
+    this.listNames = function(){
+        console.log(this.fullName) 
+    }
+
+   
+} 
+var tonyStark = new myAvenger ("Tony Stark", "XI", "NYC", "Ingeneer", "MIT", 10)
+console.log(tonyStark)
 //j) Crea otro objeto y imprime sus propiedades por pantalla.
+var giaBrag = new myAvenger ("Gianluca Bragaglia", "X", "BCN", "Developer", "SkyLab", 10)
+for(prop in giaBrag) {
+    console.log(giaBrag[prop])
+}
 
 //var otherAvenger = new Avenger...
 //console.log(otherAvenger) // Hulk...
@@ -118,6 +152,7 @@ this.listProperties: function(){
 };
 }
 Spoiler!  */
+giaBrag.listProperties();
 
 //l) Ahora, crea una función que solo liste los nombres de los objetos instanciados
 

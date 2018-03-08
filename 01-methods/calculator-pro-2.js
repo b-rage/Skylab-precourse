@@ -4,7 +4,7 @@
 
 function calculatorPro() {
     var sum = 0;
-    var sumF = function() {
+    calculatorPro.sumF = function() {
         for (num in arguments){
         sum += arguments[num];  
         }
@@ -14,6 +14,6 @@ function calculatorPro() {
     console.log(sum);
 }
 
-calculatorPro(sumF(),3,4,5);
+calculatorPro(3,4,5);
 
 
