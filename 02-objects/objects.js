@@ -47,28 +47,42 @@ keysValue();
 //c) Cambia el valor de la propiedad class por "XI" y asegurate de que los cambios se han efectuado.
 avenger.class = 'XI';
 console.log('New class = ' + avenger.class); //new class = XI
-/*
+
 //d) Ahora, elimina la propiedad ID y asegura los cambios.
+function removeID() {
+    delete avenger.ID;
+    console.log(avenger.ID) //Not exist :(
+}
+removeID();
 
-console.log(property.ThisProperty) //Not exist :(
 //e) Añade una nueva propiedad, por ejemplo city y dale un valor.
-
+avenger.city = 'New York';
 //http://www.w3schools.com/js/js_properties.asp
 
 //e1) Asegura los cambios solo imprimiendo esa nueva propiedad.
 
-console.log(city) // City => New York City
-//f) Lista el numero de propiedades que contiene el objeto.
+console.log('City => ' + avenger.city) // City => New York City
 
-console.log() // There are 4 info fields
+//f) Lista el numero de propiedades que contiene el objeto.
+console.log(Object.keys(avenger).length);
+
+
+
 //g) Cambia la propiedad name por fullName.
+avenger.fullName = avenger.name + ' Stark';
+delete avenger.name;
 
 //g1) Asegura los cambios.
 
-console.log(fullName) // Tony Stark
-//h) Lista todas las propiedades del objeto a través de un console.log()
+console.log(avenger.fullName) // Tony Stark
 
-console.log(...) // "Hi there, I'm Tony Stark..."
+//h) Lista todas las propiedades del objeto a través de un console.log()
+for(prop in avenger) {
+    console.log(avenger[prop]);
+    
+}
+// "Hi there, I'm Tony Stark..."
+/*
 //h1) Añade más propiedades al objeto, como... markAverage, country, job, studies...
 
 //h2) Asegura los cambios volviendo a listar los valores del objeto

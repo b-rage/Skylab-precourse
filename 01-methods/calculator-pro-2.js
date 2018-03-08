@@ -4,16 +4,16 @@
 
 function calculatorPro() {
     var sum = 0;
-    function sumF() {
+    var sumF = function() {
         for (num in arguments){
         sum += arguments[num];  
         }
         return sum;
     }
-    sumF();
+    
     console.log(sum);
 }
 
-calculatorPro(3,4,5);
+calculatorPro(sumF(),3,4,5);
 
 
