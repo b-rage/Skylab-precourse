@@ -119,16 +119,20 @@ function myAvenger(fullName, classRoom, city, job, studies,markAv) {
     this.fullName = fullName;
     this.classRoom = classRoom;
     this.city = city;
-    this.job= job;
-    this.studies= studies;
+    this.job = job;
+    this.studies = studies;
     this.markAv = markAv;
     this.listProperties = function(){
         console.log(this.fullName + ", " + this.classRoom +', ' + this.city + ', ' + this.job + ', ' + this.studies + ', ' + this.markAv) 
     }
-
+    //
     this.listNames = function(){
-        console.log(this.fullName) 
+        var globalAvengerArray = [];
+        globalAvengerArray.push(this.fullName) 
+        console.log(globalAvengerArray);
+            
     }
+
 
    
 } 
@@ -155,6 +159,8 @@ Spoiler!  */
 giaBrag.listProperties();
 
 //l) Ahora, crea una función que solo liste los nombres de los objetos instanciados
+giaBrag.listNames();
+
 
 //console.log(someFunction) // Tony Stark, Hulk, Thor...
 //m) Crea varios objetos con las mismas propiedades, como por ejemplo la ciudad, crea una función para que solo liste los nombres de los Avengers que sean de la misma ciudad y cuantos hay.
