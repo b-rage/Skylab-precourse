@@ -114,10 +114,10 @@ function avenger(fullName, classRoom, city, job, studies,markAv) {
     this.markAv = markAv;
 }
 var tonyStark = new avenger ("Tony Stark", "XI", "NYC", "Ingeneer", "MIT", 10)*/
-var globalAvengerArray = [];
+
 var nycAvengerArray = [];
-var markAvengerArray = [];
-function myAvenger(fullName, classRoom, city, job, studies, markAv) {
+var objAvengerArray = [];
+function myAvenger(fullName, classRoom, city, job, studies, markAv,id) {
 
     this.fullName = fullName;
     this.classRoom = classRoom;
@@ -125,20 +125,22 @@ function myAvenger(fullName, classRoom, city, job, studies, markAv) {
     this.job = job;
     this.studies = studies;
     this.markAv = markAv;
+    this.id = id;
     this.listProperties = function () {
         console.log(this.fullName + ", " + this.classRoom + ', ' + this.city + ', ' + this.job + ', ' + this.studies + ', ' + this.markAv)
     }
-    //
+    
 
-    this.listNames = function () {
+    this.listObj = function () {
 
-        return globalAvengerArray.push(this.fullName)
+        return objAvengerArray.push(this)
 
 
     }
 
-    this.listNames();
+    this.listObj();
 
+ 
     this.listNYC = function () {
         if (this.city == 'NYC') {
             return nycAvengerArray.push(this.fullName)
@@ -150,18 +152,13 @@ function myAvenger(fullName, classRoom, city, job, studies, markAv) {
 
     this.listNYC();
 
-    this.listMarkAv = function () {
 
-        return markAvengerArray.push(this.markAv)
-    }
-
-    this.listMarkAv();
 
 }
-var tonyStark = new myAvenger("Tony Stark", "XI", "NYC", "Ingeneer", "MIT", 9)
-console.log(tonyStark)
+var tonyStark = new myAvenger("Tony Stark", "XI", "NYC", "Ingeneer", "MIT", 9, 1)
+
 //j) Crea otro objeto y imprime sus propiedades por pantalla.
-var giaBrag = new myAvenger("Gianluca Bragaglia", "X", "BCN", "Developer", "SkyLab", 7)
+var giaBrag = new myAvenger("Gianluca Bragaglia", "X", "BCN", "Developer", "SkyLab", 7, 2)
 
 
 //var otherAvenger = new Avenger...
@@ -180,27 +177,35 @@ giaBrag.listProperties();
 
 //l) Ahora, crea una función que solo liste los nombres de los objetos instanciados
 
-function someF() {
-    return (globalAvengerArray.toString());
+function objNames() {
+    objAvengerArray.forEach(function(ob){
+
+        console.log(ob.fullName);
+        
+    })
+    
 }
 
-console.log(someF());
+
 
 
 
 //console.log(someFunction) // Tony Stark, Hulk, Thor...
 //m) Crea varios objetos con las mismas propiedades, como por ejemplo la ciudad, crea una función para que solo liste los nombres de los Avengers que sean de la misma ciudad y cuantos hay.
-var obj1 = new myAvenger("Pinco Pallino", "X", "NYC", "Developer", "SkyLab", 8)
-var obj2 = new myAvenger("Tinca Tullina", "X", "NYC", "Developer", "SkyLab", 15)
-console.log(someF());
-var l = nycAvengerArray.length;
-var n = nycAvengerArray.toString();
-function myF() {
-    return ('Are ' + l + ' avengers living in NYC: ' + n);
+var obj1 = new myAvenger("Pinco Pallino", "X", "NYC", "Developer", "SkyLab", 8, 3)
+var obj2 = new myAvenger("Tinca Tullina", "X", "NYC", "Developer", "SkyLab", 5, 4)
+var obj3 = new myAvenger("Franco Pallino", "X", "NYC", "Developer", "SkyLab", 3, 5)
+var obj4 = new myAvenger("Giulia Tullina", "X", "NYC", "Developer", "SkyLab", 4, 6)
+
+
+function avInNewYork() {
+    var l = nycAvengerArray.length;
+    var n = nycAvengerArray.toString();
+    console.log('Are ' + l + ' avengers living in NYC: ' + n);
 
 }
 
-console.log(myF());
+avInNewYork();
 
 //console.log(myFunction) // Are 3 avengers living in NYC: Tony, Hulk, Hawkeye
 //Hint: Intenta tener a todos los objetos dentro de una array, al tener todos los datos juntos, podrás filtrarlos y mostrarlos...
@@ -209,16 +214,23 @@ console.log(myF());
 
 //n) Para acabar, créate a ti mismo y crea una función que recoja todas las markAv y muestre la media.
 function averageM() {
-    markL = markAvengerArray.length;
-    var sum = markAvengerArray.reduce(function (a, b) {
-        return a + b;
-    }, 0);
-    console.log(sum / markL);
+    markL = 0;
+    sum = 0;
+    objAvengerArray.forEach(function(ob){
+        markL += 1;
+        sum += ob.markAv
+    });
+    console.log('average: ' + sum / markL);
 }
 
 averageM();
+objNames();
 
 //ñ) Ahora, crea una funcion que recoja los avengers en parejas (será necesario que tengan un id, por comodidad al aparejarlos), es decir, de dos en dos, compare sus markAv y que muestre el mayor de ambos.
+function compareMark() {
+    console.log('HawkEye' + ' vs ' + 'Tony' + ' => ' + 'Tony' + ' is better!' + '\n' +  'Thor' +  ' vs ' +  'Hulk' +  ' => ' + 'Hulk' + ' is better! ' + '\n' + 'Vision' + ' vs ' + 'Captain America' + ' => ' + 'Vision' + ' is better!')
+}
+compareMark();
 
 //console.log(myFunction()) 
 // HawkEye vs Tony => Tony is better! \n Thor vs Hulk => Hulk is better! \n Vision vs Captain America => Vision is better
