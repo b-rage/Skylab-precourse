@@ -151,8 +151,8 @@ function myAvenger(fullName, classRoom, city, job, studies, markAv) {
     this.listNYC();
 
     this.listMarkAv = function () {
-        
-            return markAvengerArray.push(this.markAv)
+
+        return markAvengerArray.push(this.markAv)
     }
 
     this.listMarkAv();
@@ -210,10 +210,10 @@ console.log(myF());
 //n) Para acabar, créate a ti mismo y crea una función que recoja todas las markAv y muestre la media.
 function averageM() {
     markL = markAvengerArray.length;
-    var sum = markAvengerArray.reduce(function(a, b) {
-    return a + b;
-  }, 0);
-  console.log(sum/markL);
+    var sum = markAvengerArray.reduce(function (a, b) {
+        return a + b;
+    }, 0);
+    console.log(sum / markL);
 }
 
 averageM();
