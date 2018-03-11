@@ -117,6 +117,9 @@ var tonyStark = new avenger ("Tony Stark", "XI", "NYC", "Ingeneer", "MIT", 10)*/
 
 var nycAvengerArray = [];
 var objAvengerArray = [];
+var idAvengerArray = [];
+var CoupleArray = [];
+var markAvengerArray = [];
 function myAvenger(fullName, classRoom, city, job, studies, markAv,id) {
 
     this.fullName = fullName;
@@ -151,6 +154,26 @@ function myAvenger(fullName, classRoom, city, job, studies, markAv,id) {
     }
 
     this.listNYC();
+
+
+    this.listId = function () {
+
+        return idAvengerArray.push(this.id)
+
+
+    }
+
+    this.listId();
+
+
+    this.listMark = function () {
+
+        return markAvengerArray.push(this.markAv)
+
+
+    }
+
+    this.listMark();
 
 
 
@@ -228,7 +251,15 @@ objNames();
 
 //ñ) Ahora, crea una funcion que recoja los avengers en parejas (será necesario que tengan un id, por comodidad al aparejarlos), es decir, de dos en dos, compare sus markAv y que muestre el mayor de ambos.
 function compareMark() {
-    console.log('HawkEye' + ' vs ' + 'Tony' + ' => ' + 'Tony' + ' is better!' + '\n' +  'Thor' +  ' vs ' +  'Hulk' +  ' => ' + 'Hulk' + ' is better! ' + '\n' + 'Vision' + ' vs ' + 'Captain America' + ' => ' + 'Vision' + ' is better!')
+    for(var i=0; i<markAvengerArray.length; i+=2) {
+        CoupleArray.push([markAvengerArray[i], markAvengerArray[i+1]])
+        
+    }
+    console.log(CoupleArray);
+
+    
+    
+    //console.log('HawkEye' + ' vs ' + 'Tony' + ' => ' + 'Tony' + ' is better!' + '\n' +  'Thor' +  ' vs ' +  'Hulk' +  ' => ' + 'Hulk' + ' is better! ' + '\n' + 'Vision' + ' vs ' + 'Captain America' + ' => ' + 'Vision' + ' is better!')
 }
 compareMark();
 
