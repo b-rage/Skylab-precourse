@@ -326,19 +326,5 @@ function compareMark() {
 compareMark();
 
 
-function getRandomSorted(arr, limit) {
 
-    limit = limit || 1;
-    var random = [];
-  
-    for (var i=0; i<limit; i++) {
-      var rand = arr[0|Math.random() * arr.length];
-      if (~random.indexOf(rand)){ --i; continue; }
-      random.push(rand);
-    }
-  
-    console.log(random.sort(function(a,b){ return a-b }));
-  }
-  
-  getRandomSorted(arr, 5);
 
