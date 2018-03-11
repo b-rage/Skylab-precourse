@@ -120,6 +120,7 @@ var objAvengerArray = [];
 var idAvengerArray = [];
 var CoupleArray = [];
 var markAvengerArray = [];
+var namesAvengerArray = [];
 function myAvenger(fullName, classRoom, city, job, studies, markAv,id) {
 
     this.fullName = fullName;
@@ -174,6 +175,16 @@ function myAvenger(fullName, classRoom, city, job, studies, markAv,id) {
     }
 
     this.listMark();
+
+
+    this.listNames = function () {
+
+        return namesAvengerArray.push(this.fullName)
+
+
+    }
+
+    this.listNames();
 
 
 
@@ -250,6 +261,41 @@ averageM();
 objNames();
 
 //ñ) Ahora, crea una funcion que recoja los avengers en parejas (será necesario que tengan un id, por comodidad al aparejarlos), es decir, de dos en dos, compare sus markAv y que muestre el mayor de ambos.
+/*function compareMark() {
+    for(var i=0; i<markAvengerArray.length; i+=2) {
+        CoupleArray.push([markAvengerArray[i], markAvengerArray[i+1]])
+        
+    }
+    console.log(CoupleArray);
+
+    if(CoupleArray[0][0] > CoupleArray[0][1]) {
+        var a = namesAvengerArray[0];
+    }else{
+        var a = namesAvengerArray[1];
+    }
+
+    if(CoupleArray[1][0] > CoupleArray[1][1]) {
+        var b = namesAvengerArray[2];
+    }else{
+        var b = namesAvengerArray[3];
+    }
+
+    if(CoupleArray[2][0] > CoupleArray[2][1]) {
+        var c = namesAvengerArray[4];
+    }else{
+        var c = namesAvengerArray[5];
+    }
+    
+    console.log(namesAvengerArray[0] + ' vs ' + namesAvengerArray[1] + ' => ' + a + ' is better!' + '\n' +  namesAvengerArray[2] +  ' vs ' +  namesAvengerArray[3] +  ' => ' + b + ' is better! ' + '\n' + namesAvengerArray[4] + ' vs ' + namesAvengerArray[5] + ' => ' + c + ' is better!')
+}
+compareMark();*/
+
+//console.log(myFunction()) 
+// HawkEye vs Tony => Tony is better! \n Thor vs Hulk => Hulk is better! \n Vision vs Captain America => Vision is better
+//ñ1) Intenta crear las parejas de f∏orma aleatoria.
+
+//Hint=> https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Math/random
+
 function compareMark() {
     for(var i=0; i<markAvengerArray.length; i+=2) {
         CoupleArray.push([markAvengerArray[i], markAvengerArray[i+1]])
@@ -257,15 +303,42 @@ function compareMark() {
     }
     console.log(CoupleArray);
 
+    if(CoupleArray[0][0] > CoupleArray[0][1]) {
+        var a = namesAvengerArray[0];
+    }else{
+        var a = namesAvengerArray[1];
+    }
+
+    if(CoupleArray[1][0] > CoupleArray[1][1]) {
+        var b = namesAvengerArray[2];
+    }else{
+        var b = namesAvengerArray[3];
+    }
+
+    if(CoupleArray[2][0] > CoupleArray[2][1]) {
+        var c = namesAvengerArray[4];
+    }else{
+        var c = namesAvengerArray[5];
+    }
     
-    
-    //console.log('HawkEye' + ' vs ' + 'Tony' + ' => ' + 'Tony' + ' is better!' + '\n' +  'Thor' +  ' vs ' +  'Hulk' +  ' => ' + 'Hulk' + ' is better! ' + '\n' + 'Vision' + ' vs ' + 'Captain America' + ' => ' + 'Vision' + ' is better!')
+    console.log(namesAvengerArray[0] + ' vs ' + namesAvengerArray[1] + ' => ' + a + ' is better!' + '\n' +  namesAvengerArray[2] +  ' vs ' +  namesAvengerArray[3] +  ' => ' + b + ' is better! ' + '\n' + namesAvengerArray[4] + ' vs ' + namesAvengerArray[5] + ' => ' + c + ' is better!')
 }
 compareMark();
 
-//console.log(myFunction()) 
-// HawkEye vs Tony => Tony is better! \n Thor vs Hulk => Hulk is better! \n Vision vs Captain America => Vision is better
-//ñ1) Intenta crear las parejas de f∏orma aleatoria.
 
-//Hint=> https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Math/random
+function getRandomSorted(arr, limit) {
+
+    limit = limit || 1;
+    var random = [];
+  
+    for (var i=0; i<limit; i++) {
+      var rand = arr[0|Math.random() * arr.length];
+      if (~random.indexOf(rand)){ --i; continue; }
+      random.push(rand);
+    }
+  
+    console.log(random.sort(function(a,b){ return a-b }));
+  }
+  
+  getRandomSorted(arr, 5);
 
