@@ -31,12 +31,46 @@ function skyAir() {
     welcome();
 
     function totalFlight() {
-        for(fly in arguments) {
-            console.log(fly);
+        var a;
+        flights.forEach(function(ob) {
+            if(!ob.scale) {
+                a = 'no realiza ninguna escala.';
+            }else{
+                a = 'realiza escala.';
+            }
+            console.log('El vuelo con origen: ' + ob.to + ', y destino ' + ob.from + ' tiene un coste de ' + ob.cost + ' € y ' + a);
+        })
+    }
+    totalFlight();
+
+    function averageCost() {
+        var acc = 0;
+        flights.forEach(function(obj) {
+            acc += obj.cost;
+        })
+        console.log('El coste medio del los vuelos es: ' + acc + ' €');
+    }
+    averageCost()
+
+    function flightScale() {
+        var count = 0;
+        flights.forEach(function(o) {
+           
+            if(o.scale) {
+                count += 1;
+            }
+        })
+        console.log('Hay ' + count + ' vuelos que realizan escalas');
+    }
+    flightScale()
+
+    function las5flights() {
+        for(var j=0; j<flights.length/2; j++) {
+            console.log(flights[j].from);
             
         }
     }
-    totalFlight();
+    las5flights()
 }
 
 skyAir();
