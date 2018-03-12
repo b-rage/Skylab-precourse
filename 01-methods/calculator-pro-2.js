@@ -3,77 +3,68 @@
 
 
 function calculatorPro() {
-    var arr = [];
+  /*   var arr = [];
     for(num in arguments) {
         arr.push(arguments[num]);
-    }
+    } */
+    var numArr = prompt('Introducir los numeros separados por coma: \npor exemplo 34,65,4,12  ....');
+    var arr;
     
     
     sumF = function() {
 
-        return arr.reduce(function(a,b){return a+b;});
+        return arr.reduce(function(a,b){return (a+b.toFixed(3));});
     }
 
     restF = function() {
 
-        return arr.reduce(function(a,b){return a-b;});
+        return arr.reduce(function(a,b){return (a-b.toFixed(3));});
 
     }    
     
     multiF = function() {
         
-        return arr.reduce(function(a,b){return a*b;});
+        return arr.reduce(function(a,b){return (a*b.toFixed(3));});
     }
     
     divF = function() {
         
-        return arr.reduce(function(a,b){return a/b;});
+        return arr.reduce(function(a,b){return (a/b).toFixed(3);});
     }
 
 
     function startCalc() {
-        if (isNaN(arr[num]) === true || arr[num] == undefined || arr[num] == 0) {
-            console.log('tienes que introducir numeros');
-        } else if (arr.length == 1) {
+        arr = numArr.split(',').map(Number);
+        for(var j=0; j<arr.length; j++) {
+            if (isNaN(arr[j]) === true || arr[j] == undefined || arr[j] == 0) {
+                console.log('tienes que introducir numeros');
+                calculatorPro();
+            }
+        }
+        if (arr.length == 1) {
             console.log('La raiz cuandrada del numero introducico es ' + Math.sqrt(arr[0]).toFixed(3));
 
         } else {
             console.log('La suma de los numeros introducidos es ' + sumF() + ', la resta es ' + restF() + ' la multiplicación es ' + multiF() + ' la división es ' + divF());
-
-            var choice = prompt('quieres hacer otras operaciones?  y/n');
-            var choiceM = choice.toUpperCase();
-            if (choiceM !== 'Y' || choiceM !== 'N') {
-
-                switch (choiceM) {
-                    case 'Y':
-                        calculatorPro(23, 7, 8);
-                        break;
-                    case 'N':
-                        console.log('Bye bye!');
-                        break;
-                }
-            }else{
-                switch (choiceM) {
-                    case 'Y':
-                        calculatorPro(23, 7, 8);
-                        break;
-                    case 'N':
-                        console.log('Bye bye!');
-                        break;
-
-
-                }
-            }
         }
+        var choice = prompt('quieres hacer otras operaciones?  y/n');
+        var choiceM = choice.toUpperCase();
 
-
+        switch (choiceM) {
+            case 'Y':
+                calculatorPro();
+                break;
+            case 'N':
+                console.log('Bye bye!');
+                break;
+        }
     }
 
     startCalc();
 }
 
-calculatorPro(18, 3, 2);
-calculatorPro(0);
+calculatorPro();
+/* calculatorPro(0);
 calculatorPro();
 calculatorPro(0, 0);
 calculatorPro("Pepe");
@@ -83,6 +74,6 @@ calculatorPro(1.0, 0);
 calculatorPro(0, "Pepe");
 calculatorPro(54);
 calculatorPro(3, 8);
-
+ */
 
 
