@@ -3,33 +3,30 @@
 
 
 function calculatorPro() {
-  /*   var arr = [];
-    for(num in arguments) {
-        arr.push(arguments[num]);
-    } */
+
     var numArr = prompt('Introducir los numeros separados por coma: \npor exemplo 34,65,4,12  ....');
     var arr;
     
     
     sumF = function() {
 
-        return arr.reduce(function(a,b){return (a+b.toFixed(3));});
+        return arr.reduce(function(a,b){return (a+b).toFixed(3)});
     }
 
     restF = function() {
 
-        return arr.reduce(function(a,b){return (a-b.toFixed(3));});
+        return arr.reduce(function(a,b){return (a-b).toFixed(3)});
 
     }    
     
     multiF = function() {
         
-        return arr.reduce(function(a,b){return (a*b.toFixed(3));});
+        return arr.reduce(function(a,b){return (a*b).toFixed(3)});
     }
     
     divF = function() {
         
-        return arr.reduce(function(a,b){return (a/b).toFixed(3);});
+        return arr.reduce(function(a,b){return (a/b).toFixed(3)});
     }
 
 
