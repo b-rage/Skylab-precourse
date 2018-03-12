@@ -67,8 +67,8 @@ function skyAir() {
     function las5flights() {
         for(var j=0; j<flights.length/2; j++) {
             console.log(flights[j].from);
-            
-        }
+            } 
+     
     }
     las5flights()
 }
