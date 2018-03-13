@@ -21,7 +21,8 @@ var flights = [
 {id: 08, to: "Sydney", from: "Barcelona", cost: 150,scale: true},
 {id: 09, to: "Tel-Aviv", from: "Madrid", cost: 150,scale: false}
 ]
-//console.log(flights[0].to) //output: New York
+
+
 
 function skyAir() {
     var a;
@@ -79,36 +80,138 @@ function skyAir() {
     console.log('Los ultimos 5 vuelos de hoy son: ');
     las5flights()
 
-    var admin = prompt('si eres ADMIN escribe A, si eres user escribe U');
+    var admin = prompt('si eres ADMIN escribe A, si eres USER escribe U');
+
+    //-----------------------------------------------------//
 
     function userF() {
         arrCost = [];
-        function lowCostFly() {
-             
-             flights.forEach(function(obj) {
-                 arrCost.push(obj.cost);
-             })
-            
-            var min = Math.min.apply(Math, arrCost);
-            var idL = arrCost.indexOf(min);
-            console.log('El coste minimo de un vuelo es: ' + min + ' €')
-            console.log( 'ID: ' + flights[idL].id + ' - Vuelo con origen ' + flights[idL].to + ', y destino ' + flights[idL].from + ' tiene un coste de ' + flights[idL].cost + ' € y ' + a);
-            
-        }
-        lowCostFly();
+        flights.forEach(function(obj) {
+            arrCost.push(obj.cost);
+        })
 
-        function highCostFly() {
-           
-           var max = Math.max.apply(Math, arrCost);
-           var idL = arrCost.indexOf(max);
-           console.log('El coste miaximo de un vuelo es: ' + max + ' €')
-           console.log( 'ID: ' + flights[idL].id + ' - Vuelo con origen ' + flights[idL].to + ', y destino ' + flights[idL].from + ' tiene un coste de ' + flights[idL].cost + ' € y ' + a);
-           
+        function findCostH() {
+            var costF = prompt('escribe un precio para ver los vuelos con precio mas alto');
+            var cost = parseInt(costF);
+            console.log('Vuelos con precio mas alto que ' + cost + ':');
+            var hCost = [];
+            for(var j=0; j<flights.length; j++) {
+                if(flights[j].cost > cost) {
+                    hCost.push(flights[j]);                    
+                }
+            }
+
+            var sort_by = function(field, reverse, primer){     //sort array object by
+
+                var key = primer ? 
+                    function(x) {return primer(x[field])} : 
+                    function(x) {return x[field]};
+             
+                reverse = !reverse ? 1 : -1;
+             
+                return function (a, b) {
+                    return a = key(a), b = key(b), reverse * ((a < b) - (b < a));
+                  } 
+             }
+
+            var arrHcost = hCost.sort(sort_by('cost', true, parseInt));  // Sort by price high to low
+            arrHcost.forEach(function(ob) {
+                console.log('El vuelo con origen: ' + ob.to + ', y destino ' + ob.from + ' tiene un coste de ' + ob.cost + ' € y ' + a);
+                
+            })
+
         }
-        highCostFly();
+        findCostH()
+
+        function findCostL() {
+            var costF = prompt('escribe un precio para ver los vuelos con precio mas bajo');
+            var cost = parseInt(costF);
+            console.log('Vuelos con precio mas bajo que ' + cost + ':');
+            var hCost = [];
+            for(var j=0; j<flights.length; j++) {
+                if(flights[j].cost < cost) {
+                    hCost.push(flights[j]);                    
+                }
+            }
+
+            var sort_by = function(field, reverse, primer){     //sort array object by
+
+                var key = primer ? 
+                    function(x) {return primer(x[field])} : 
+                    function(x) {return x[field]};
+             
+                reverse = !reverse ? 1 : -1;
+             
+                return function (a, b) {
+                    return a = key(a), b = key(b), reverse * ((a < b) - (b < a));
+                  } 
+             }
+
+            var arrHcost = hCost.sort(sort_by('cost', true, parseInt));  // Sort by price high to low
+            var revArrHCost = arrHcost.reverse();
+            revArrHCost.forEach(function(ob) {
+                console.log('El vuelo con origen: ' + ob.to + ', y destino ' + ob.from + ' tiene un coste de ' + ob.cost + ' € y ' + a);
+                
+            })
+
+        }
+        findCostL();
+
+        function findCostE() {
+            var costF = prompt('escribe un precio para ver los vuelos con precio igual');
+            var cost = parseInt(costF);
+            console.log('Vuelos con precio igual que ' + cost + ':');
+
+            for(var j=0; j<flights.length; j++) {
+                if(flights[j].cost == cost) {
+                    console.log('El vuelo con origen: ' + flights[j].to + ', y destino ' + flights[j].from + ' tiene un coste de ' + flights[j].cost + ' € y ' + a);
+                    
+                }                                        
+            }
+
+            console.log('Ninguno');
+        }
+        findCostE()
+
 
         console.log("Gracias por su compra, vuelva pronto.");
     }
+
+    //-----------------------------------------------//
+
+    function adminF() {
+
+        
+        function addFlight(toO,fromO,costO) {
+            var toO = prompt('inserta la origen');
+            var fromO = prompt('inserta el destino');
+            var costO = prompt('inserta el coste');
+            var scaleO = prompt('el vuelo realiza alguna escala? Y/N');
+            scaleO = scaleO.toUpperCase();
+            switch(scaleO) {
+                case 'Y':
+                    scaleO = true;
+                    break;
+                case 'N':
+                    scaleO = false;
+            }
+            idO = flights.length;
+            costO = parseInt(costO);
+            flights.push({id: idO, to: toO, from: fromO, cost: costO, scale: scaleO});
+
+        }
+       
+        
+        addFlight();
+        console.log(flights);
+
+
+
+
+    }
+
+
+    //-----------------------------------------------//
 
     var adminM = admin.toUpperCase();
     switch(adminM) {
