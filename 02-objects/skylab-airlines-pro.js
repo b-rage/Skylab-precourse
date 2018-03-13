@@ -82,8 +82,9 @@ function skyAir() {
     var admin = prompt('si eres ADMIN escribe A, si eres user escribe U');
 
     function userF() {
+        arrCost = [];
         function lowCostFly() {
-             arrCost = [];
+             
              flights.forEach(function(obj) {
                  arrCost.push(obj.cost);
              })
@@ -92,9 +93,21 @@ function skyAir() {
             var idL = arrCost.indexOf(min);
             console.log('El coste minimo de un vuelo es: ' + min + ' €')
             console.log( 'ID: ' + flights[idL].id + ' - Vuelo con origen ' + flights[idL].to + ', y destino ' + flights[idL].from + ' tiene un coste de ' + flights[idL].cost + ' € y ' + a);
-            console.log("Gracias por su compra, vuelva pronto.");
+            
         }
         lowCostFly();
+
+        function highCostFly() {
+           
+           var max = Math.max.apply(Math, arrCost);
+           var idL = arrCost.indexOf(max);
+           console.log('El coste miaximo de un vuelo es: ' + max + ' €')
+           console.log( 'ID: ' + flights[idL].id + ' - Vuelo con origen ' + flights[idL].to + ', y destino ' + flights[idL].from + ' tiene un coste de ' + flights[idL].cost + ' € y ' + a);
+           
+        }
+        highCostFly();
+
+        console.log("Gracias por su compra, vuelva pronto.");
     }
 
     var adminM = admin.toUpperCase();
