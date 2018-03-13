@@ -48,7 +48,8 @@ function skyAir() {
         flights.forEach(function(obj) {
             acc += obj.cost;
         })
-        console.log('El coste medio del los vuelos es: ' + acc + ' €');
+        var averageCost = acc / flights.length;
+        console.log('El coste medio del los vuelos es: ' + averageCost + ' €');
     }
     averageCost()
 
@@ -70,6 +71,8 @@ function skyAir() {
             } 
      
     }
+    console.log('Los ultimos 5 vuelos de hoy son: ');
+    
     las5flights()
 }
 
