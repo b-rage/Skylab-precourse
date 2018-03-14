@@ -198,15 +198,41 @@ function skyAir() {
             idO = flights.length;
             costO = parseInt(costO);
             flights.push({id: idO, to: toO, from: fromO, cost: costO, scale: scaleO});
+            if(flights.length<25) {
+                var addMore = prompt('Quieres inserter otro vuelo?  Y/N');
+                addMore = addMore.toUpperCase();
+                switch(addMore) {
+                    case 'Y':
+                        addFlight();
+                        break;
+                    case 'N':
+                        break;
+                }
+            }else{
+                alert('No puedes introducir mas vuelos');
+            }
+            
 
         }
-       
-        
         addFlight();
+        
+        
+        function deleteFlight() {
+            var del = prompt('Quieres cancelar un vuelo?  Y/N');
+            del = del.toUpperCase();
+            switch(del) {
+                case 'Y':
+                    var delF = prompt('Inserta el Id del vuelo que quieres cancelar');
+                    delete flights[delF];
+                    console.log('El vuelo con Id= ' + delF + ' ha sido cancelado');
+                    break;
+                case 'N':
+                    break;
+            }
+
+        }
+        deleteFlight();
         console.log(flights);
-
-
-
 
     }
 
