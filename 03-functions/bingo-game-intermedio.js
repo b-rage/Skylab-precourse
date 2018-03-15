@@ -29,26 +29,42 @@ function bingo() {
 
     var playerName = prompt('Escribe tu nombre');
     var card = [[],[],[]];
+    var arrRandomNum = [];
+
 
     function addNumerCard() {
         
         for(var j=0; j<5; j++) {
             
             for(var i=0; i<3; i++) {
-                 
-                card[i].push(Math.floor(Math.random()*(90-1+1)+1));
+                
+                card[i].push(generateRandom());
             }
         }
     }
     addNumerCard();
     console.log(card[0] + '\n' + card[1] + '\n' + card[2]);
+   
+    
     askTurn();
     
     
 
     function generateRandom() {
+        
         var randomNum = Math.floor(Math.random()*(90-1+1)+1);
-        randomNum = parseInt(randomNum);
+        arrRandomNum.push(randomNum);
+        //console.log(arrRandomNum);
+        for(var s=0; s<arrRandomNum.length-1; s++) {
+            if(arrRandomNum[s] == randomNum) {
+                arrRandomNum.splice(-1,1);
+                randomNum = Math.floor(Math.random()*(90-1+1)+1);
+                arrRandomNum.push(randomNum);
+                
+            }
+        }
+        
+        
         return randomNum;
     }
 
@@ -56,20 +72,28 @@ function bingo() {
     function newTurn() {
         var rand = generateRandom();
         var bingo = [['X','X','X','X'], ['X','X','X','X'], ['X','X','X','X']];
+        var line = ['X','X','X','X'];
         for(var j=0; j<5; j++) {
             
             for(var i=0; i<3; i++) {
                  
                 if(card[i][j] == rand) {
-                    card[i][j].splice(card[i][j], 1, 'X');
+
+                    card[i].splice(card[i][j],1,'X');
                     
                 }
             }
         }
         
         console.log(rand + '\n' + card[0] + '\n' + card[1] + '\n' + card[2]);
+        var count = 0;
         if(bingo === card) {
             console.log('Has ganado ' + playerName + '!!!');
+        }else if(card[0] === line && count == 0 || card[1] === line && count == 0 || card[2] === line && count == 0) {
+            count++
+            console.log('LINEA!!!');
+            
+            
         }else{
             askTurn();
         }
