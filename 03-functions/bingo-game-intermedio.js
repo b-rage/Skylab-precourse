@@ -34,11 +34,11 @@ function bingo() {
 
     function addNumerCard() {
         
-        for(var j=0; j<5; j++) {
+        for(var j=0; j<3; j++) {
             
-            for(var i=0; i<3; i++) {
+            for(var i=0; i<5; i++) {
                 
-                card[i].push(generateRandom());
+                card[j].push(generateRandom());
             }
         }
     }
@@ -51,22 +51,39 @@ function bingo() {
     
 
     function generateRandom() {
-        
+        /*
         var randomNum = Math.floor(Math.random()*(90-1+1)+1);
-        arrRandomNum.push(randomNum);
+        //arrRandomNum.push(randomNum);
         //console.log(arrRandomNum);
-        for(var s=0; s<arrRandomNum.length-1; s++) {
+         for(var s=0; s<arrRandomNum.length-1; s++) {
             if(arrRandomNum[s] == randomNum) {
                 arrRandomNum.splice(-1,1);
                 randomNum = Math.floor(Math.random()*(90-1+1)+1);
                 arrRandomNum.push(randomNum);
                 
             }
+        } 
+        
+        
+        return randomNum; */
+
+        var randomArr = [], trackingArr = [],
+        targetCount = 90, currentCount = 0,
+        min = 1, max = 90,
+        rnd;
+
+        while (currentCount < targetCount) {
+            rnd = Math.floor(Math.random() * (max - min + 1)) + min;
+            if (!trackingArr[rnd]) {
+                trackingArr[rnd] = rnd;
+                randomArr[currentCount] = rnd;
+                currentCount += 1;
+            }
         }
-        
-        
-        return randomNum;
-    }
+
+        console.log(randomArr);  // Will contain 90 unique, random numbers between 1 and 90.
+
+    } 
 
 
     function newTurn() {
@@ -80,6 +97,8 @@ function bingo() {
                 if(card[i][j] == rand) {
 
                     card[i].splice(card[i][j],1,'X');
+                    console.log('Se ha encontrado el numero ' + rand);
+                    
                     
                 }
             }
