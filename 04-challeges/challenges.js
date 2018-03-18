@@ -117,6 +117,7 @@ fibo(10);
 function fiboPyramid(num){
     var i;
     var fib = []; // Initialize array!
+    var fibNew = [];
 
     fib[0] = 0;
     fib[1] = 1;
@@ -126,10 +127,19 @@ function fiboPyramid(num){
         // Translated to JavaScript:
         fib[i] = fib[i-2] + fib[i-1];
     }
-   for(var j=0; j<num; j++) {
-       console.log(fib[j]);
+ 
+    for(var j=0; j<num+1; j++){
+
+       fibNew.push(fib[j]);
+       console.log(fibNew.join());
         
-   }
+    }
+    for(var j=num; j>0; j--) {
+
+        fibNew.pop(j);
+        console.log(fibNew.join());
+         
+     }
 }
 fiboPyramid(10);
 /* 
@@ -147,22 +157,27 @@ fiboPyramid(10);
 0 1
 0 */
 
-/*
 
-c) Simple Scripting program. Crea un programa que transforme un número de 4 dígitos en otro diferente con las posiciones de los dígitos cambiadas, creandio un nuevo código
+
+//c) Simple Scripting program. Crea un programa que transforme un número de 4 dígitos en otro diferente con las posiciones de los dígitos cambiadas, creandio un nuevo código
 
 var code = 3712;
-function codeScript(code){}
-//output:
- ⬇︎//First call to codeScript()
-- 7123
- ⬇︎//Second call to codeScript()
-- 1237
- ⬇︎//Third call to codeScript()
-- 2371
-// At Four call, should return the original value
-El primer numero se traslada a la última posicion. El segundo, el tercero y el cuarto suben una posición.
 
+function codeScript(code){
+
+    var codeStr = code.toString();
+    var codeStr1 = codeStr.substr(1);
+    console.log(codeStr1 + codeStr[0]);
+}
+codeScript(3712);
+codeScript(7123);
+codeScript(1237);
+codeScript(2371);
+//output:/*  
+
+// At Four call, should return the original value
+//El primer numero se traslada a la última posicion. El segundo, el tercero y el cuarto suben una posición.
+/*
 c2) Ahora, el usuario debería poder introducir como parámetro dos códigos a la vez y devolver los dos códigos encriptados (Los dos códigos se deberían encriptar en la misma función)
 
 function codeScript(code1, code2){}
