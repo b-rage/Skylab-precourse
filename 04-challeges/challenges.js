@@ -155,7 +155,7 @@ fiboPyramid(10);
 0 1 1 2
 0 1 1
 0 1
-0 */
+0 
 
 
 
@@ -177,14 +177,83 @@ codeScript(2371);
 
 // At Four call, should return the original value
 //El primer numero se traslada a la última posicion. El segundo, el tercero y el cuarto suben una posición.
+
+//c2) Ahora, el usuario debería poder introducir como parámetro dos códigos a la vez y devolver los dos códigos encriptados (Los dos códigos se deberían encriptar en la misma función)
+
+function codeScript2(code1, code2){
+
+    var codeStr1 = code1.toString();
+    var codeStr11 = codeStr1.substr(1);
+    var codeStr2 = code2.toString();
+    var codeStr22 = codeStr2.substr(1);
+    console.log((codeStr11 + codeStr1[0]) + '\n' + (codeStr22 + codeStr2[0]));
+}
+codeScript2(3712, 4578);
+codeScript2(7123, 5784);
+codeScript2(1237, 7845 );
+codeScript2(2371, 8457);
+*/
+//c3) Ahora, vamos a añadir un nivel más de seguridad. Despues de cambiar la posición de los dígitos, multiplicaremos a cada miembro por un numero cuya multiplicación no sea superior a 10. (Si es superior a 10, conseguiremos una multplicación de dos digitos y el código ya no sería de 4 valores)
+var code1E;
+var code2E;
+function codeScript2(code1, code2){
+
+    var codeStr1 = code1.toString();
+    var codeStr11 = codeStr1.substr(1);
+    var codeStr2 = code2.toString();
+    var codeStr22 = codeStr2.substr(1);
+    var codeCript1 = codeStr11 + codeStr1[0];
+    var codeCript2 = codeStr22 + codeStr2[0];
+    var codeCript1Arr = [];
+    var codeCript2Arr = [];
+    for(var i=0; i<codeCript1.length; i++) {
+        if(codeCript1[i]<5) {
+                codeCript1Arr.push(codeCript1[i]*2);
+        }else{
+            codeCript1Arr.push(9-codeCript1[i]);
+        }
+    }
+    var code1E = codeCript1Arr.join('');
+
+    for(var i=0; i<codeCript2.length; i++) {
+        if(codeCript2[i]<5) {
+                codeCript2Arr.push(codeCript2[i]*2);
+        }else{
+            codeCript2Arr.push(9-codeCript2[i]);
+        }
+    }
+    var code2E = codeCript2Arr.join('');
+    console.log(code1E + ' ' + code2E);
+    
+    
+}
+codeScript2(3712, 4578);
+
+
+//c4) Ahora, implementa en otra funcion aparte el decrypter(), que recibirá como argumento un código encriptado (y correspondientemente multiplicado en el apartado c3) y nos devuelva el código desencriptado.
+var codeDeCript1Arr = [];
+var codeDeCript2Arr = [];
+
+function codeDecrypt(code1E, code2E) {
+    var code1EStr = code1E.toString();
+    var code2EStr = code2E.toString();
+    for(var i=0; i<code1EStr.length; i++) {
+        if(code1EStr[i]/2 < 5) {
+                codeDeCript1Arr.push(code1EStr[i]/2);
+        }else if(9 - code1EStr[i] >= 0) { 
+            codeDeCript1Arr.push(code1E[i]);
+        }
+    }
+    codeDeCript1Arr.unshift(codeDeCript1Arr[3]);
+    codeDeCript1Arr.pop();
+    console.log(codeDeCript1Arr);
+    
+}
+codeDecrypt(7246, 5788);
+
+
+
 /*
-c2) Ahora, el usuario debería poder introducir como parámetro dos códigos a la vez y devolver los dos códigos encriptados (Los dos códigos se deberían encriptar en la misma función)
-
-function codeScript(code1, code2){}
-c3) Ahora, vamos a añadir un nivel más de seguridad. Despues de cambiar la posición de los dígitos, multiplicaremos a cada miembro por un numero cuya multiplicación no sea superior a 10. (Si es superior a 10, conseguiremos una multplicación de dos digitos y el código ya no sería de 4 valores)
-
-c4) Ahora, implementa en otra funcion aparte el decrypter(), que recibirá como argumento un código encriptado (y correspondientemente multiplicado en el apartado c3) y nos devuelva el código desencriptado.
-
 c5) Añade las dos funciones a la misma función padre, de forma que encripte y desencripte a la vez cuando termine de ejecutarse.
 
 function codeScript(code1, code2){... codeDecrypt(code1Encrypt,code2Encrypt)}
