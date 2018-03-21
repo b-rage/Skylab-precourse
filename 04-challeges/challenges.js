@@ -253,8 +253,8 @@ codeDecrypt(7246, 5788);
 
 
 
-/*
-c5) Añade las dos funciones a la misma función padre, de forma que encripte y desencripte a la vez cuando termine de ejecutarse.
+
+/* c5) Añade las dos funciones a la misma función padre, de forma que encripte y desencripte a la vez cuando termine de ejecutarse.
 
 function codeScript(code1, code2){... codeDecrypt(code1Encrypt,code2Encrypt)}
 c6) El usuario podrá solo introducir letras, cada número del 0 al 9 corresponderá a varias letras. Podéis seguir este esquema.
@@ -267,20 +267,104 @@ var dictionary = {
     4: ['E', 'Ñ', 'X', 'J', 'S', ' ']
 }
 function codeScript("HI  ", "WE  ", "NEED", "HELP"){}
-"HI__" = "dictionary[7][0]+dictionary[8][0]+dictionary[9][2]+dictionary[9][2]..."
-d) Crea un programa que use la encriptacion Romana, como es? Si tenemos la palabra SKYLAB, la palabra encriptada será SLKAYB. Si divides la palabra original en 2 grupos obtienes:
+"HI__" = "dictionary[7][0]+dictionary[8][0]+dictionary[9][2]+dictionary[9][2]..." */
+//d) Crea un programa que use la encriptacion Romana, como es? Si tenemos la palabra SKYLAB, la palabra encriptada será SLKAYB. Si divides la palabra original en 2 grupos obtienes:
 
-SKY
-|-|-|
-LAB Entonces, uniendo las primeras letras de cada grupo, las segundas y las terceras obtienes SLKAYB.
-Entonces, el programa deberá recibir SKYLAB y retornar SLKAYB
+//SKY
+//|-|-|
+//LAB Entonces, uniendo las primeras letras de cada grupo, las segundas y las terceras obtienes SLKAYB.
+//Entonces, el programa deberá recibir SKYLAB y retornar SLKAYB
 
-d2) Programa el desencriptador, pasa como parámetro SLKAYB y que devuelva SKYLAB.
+function showNums(str) {
+    var str1 = [];
+    var str2 = [];
+    var strEncr = [];
+    for(var i=0; i<str.length; i++) {
+        if(i<3) {
+            str1.push(str[i]);
+        }else{
+            str2.push(str[i]);
+        }
+        
+    }
 
-Hint: for decrypt, only catch the pair words like: S L K A Y B , then, you get SKY, the next step is catch the odd words, S L K A Y B, group the two groups and you get the original word.
+    for(var i=0; i<str1.length; i++) {
+        strEncr.push(str1[i]);
+        strEncr.push(str2[i]);
 
-d3) Agrupa la función Encrypt y decrypt en una unica función, de forma que introduzcas como parámetro SKYLAB y devuelva SKYLAB (con todas las transformaciones internas hechas y mostrando, entre medias, la transformación)
+    }
+    console.log(strEncr);
+}
 
+showNums('skylab')
+
+
+//d2) Programa el desencriptador, pasa como parámetro SLKAYB y que devuelva SKYLAB.
+
+function deCript(strE) {
+    var str1D = [];
+    var str2D = [];
+    var strDecript= [];
+    for(var i=0; i<strE.length; i++) {
+        if(i%2 ==0) {
+            str1D.push(strE[i]);
+        }else{
+            str2D.push(strE[i]);
+        }
+    }
+  
+    console.log(str1D.join('') + str2D.join(''));
+    
+}
+deCript('SLKAYB');
+
+//d3) Agrupa la función Encrypt y decrypt en una unica función, de forma que introduzcas como parámetro SKYLAB y devuelva SKYLAB (con todas las transformaciones internas hechas y mostrando, entre medias, la transformación)
+
+function skyED(str) {
+    var str;
+    function showNums(str) {
+        var str1 = [];
+        var str2 = [];
+        var strEncr = [];
+        for(var i=0; i<str.length; i++) {
+            if(i<3) {
+                str1.push(str[i]);
+            }else{
+                str2.push(str[i]);
+            }
+            
+        }
+    
+        for(var i=0; i<str1.length; i++) {
+            strEncr.push(str1[i]);
+            strEncr.push(str2[i]);
+    
+        }
+        console.log(strEncr.join(''));
+        return strEncr.join('')
+    }
+
+    var strE = showNums(str);
+    
+    function deCript(strE) {
+        var str1D = [];
+        var str2D = [];
+        var strDecript= [];
+        for(var i=0; i<strE.length; i++) {
+            if(i%2 ==0) {
+                str1D.push(strE[i]);
+            }else{
+                str2D.push(strE[i]);
+            }
+        }
+      
+        console.log(str1D.join('') + str2D.join(''));
+        
+    }
+    deCript(strE);
+}
+skyED('SKYLAB');
+/*
 d4) Lo tienes? Prueba ahora con SKYLABCODERS. Cambia la función para que pueda aceptar palabras más largas.
 
 e) Crea un programa al que le introduces un número como parámetro del 0 al 100 y devuelve el número transformado a alfabeto normal, es decir:
