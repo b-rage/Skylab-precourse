@@ -327,7 +327,7 @@ function skyED(str) {
         var str2 = [];
         var strEncr = [];
         for(var i=0; i<str.length; i++) {
-            if(i<3) {
+            if(i<str.length/2) {
                 str1.push(str[i]);
             }else{
                 str2.push(str[i]);
@@ -363,7 +363,7 @@ function skyED(str) {
     }
     deCript(strE);
 }
-skyED('SKYLAB');
+skyED('SKYLABCODERS');
 /*
 d4) Lo tienes? Prueba ahora con SKYLABCODERS. Cambia la función para que pueda aceptar palabras más largas.
 
