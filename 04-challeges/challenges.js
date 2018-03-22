@@ -364,33 +364,91 @@ function skyED(str) {
     deCript(strE);
 }
 skyED('SKYLABCODERS');
+
+//d4) Lo tienes? Prueba ahora con SKYLABCODERS. Cambia la función para que pueda aceptar palabras más largas.
+
+//e) Crea un programa al que le introduces un número como parámetro del 0 al 100 y devuelve el número transformado a alfabeto normal, es decir:
+
+function sayItWithWords(num) {
+    var units = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+    var tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
+    var teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+    var dec = num.toString();
+    if(num.length == 1) {
+        console.log(units[num]);
+        
+    }else if(dec.length == 2 && dec[0] == 1)  {
+        
+        console.log(teens[dec[1]]);
+    }else if(dec.length == 2) {
+        console.log(tens[dec[0]] + '-' + units[dec[1]]);
+        
+    }
+}
+
+//sayItWithWords(5)  //output Five
+//sayItWithWords(13)  //output twenty-three
+//sayItWithWords(45)  //output seventy-one
+
+
+//var units = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+//var tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
+//var teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+
+//e2) Ahora, el output debería ser capaz de, aparte de devolver el número traducido, devolver también los números por los que está formado:
+
+function sayItWithWords2(num) {
+    var units = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+    var tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
+    var teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+    var dec = num.toString();
+    if(dec.length == 1) {
+        console.log(units[dec] + ', ' + units[dec] + ' / ' + dec);
+        
+    }else if(dec.length == 2 && dec[0] == 1)  {
+        
+        console.log(teens[dec[1]]);
+    }else if(dec.length == 2) {
+        console.log(tens[dec[0]] + '-' + units[dec[1]] + ', ' + tens[dec[0]] + ' + ' + units[dec[1]] + ' / ' + dec[0] + '0' + ' + ' + dec[1]);
+        
+    }
+}
+
+//sayItWithWords2(5) //output Five, five / 5
+//sayItWithWords2(23)  //output twenty-three, twenty + three / 20 + 3
+//sayItWithWords2(71)  //output seventy-one, seventy + one / 70 + 1
+
+
+//e3) Cambia tu programa para que acepte cualquier número entre 0 y 1000.
+
+function sayItWithWords3(num) {
+    var units = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+    var tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
+    var teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+    var dec = num.toString();
+    if(dec.length == 1) {
+        console.log(units[dec] + ', ' + units[dec] + ' / ' + dec);
+        
+    }else if(dec.length == 2 && dec[0] == 1)  {
+        
+        console.log(teens[dec[1]]);
+    }else if(dec.length == 2) {
+        console.log(tens[dec[0]] + '-' + units[dec[1]] + ', ' + tens[dec[0]] + ' + ' + units[dec[1]] + ' / ' + dec[0] + '0' + ' + ' + dec[1]);
+    }else if(dec.length == 3 && (dec[1] !== 0) && (dec[2] !==0)) {
+        console.log(units[dec[0]] + ' hundred ' + tens[dec[1]] + '-' + units[dec[2]] + ', ' + units[dec[0]] + ' hundred + ' + tens[dec[1]] + ' + ' + units[dec[1]] + ' / ' + dec[0] + '00 + ' + dec[1] + '0' + ' + ' + dec[2]);
+    }
+}
+
+sayItWithWords3(500)  //output five hundred , five hundred  / 500
+sayItWithWords3(233)  //output two hundred thirty three, two hundred + thirty + three/ 200 + 30 + 3
+sayItWithWords3(498)  //output four hundred ninety eight, four hundred + ninety + eight/ 400 + 90 + 8
+
 /*
-d4) Lo tienes? Prueba ahora con SKYLABCODERS. Cambia la función para que pueda aceptar palabras más largas.
-
-e) Crea un programa al que le introduces un número como parámetro del 0 al 100 y devuelve el número transformado a alfabeto normal, es decir:
-
-sayItWithWords(5) => //output Five
-sayItWithWords(23) => //output twenty-three
-sayItWithWords(71) => //output seventy-one
-Hint:
-
-var units = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
-var tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
-var teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
-e2) Ahora, el output debería ser capaz de, aparte de devolver el número traducido, devolver también los números por los que está formado:
-
-sayItWithWords(5) => //output Five, five / 5
-sayItWithWords(23) => //output twenty-three, twenty + three / 20 + 3
-sayItWithWords(71) => //output seventy-one, seventy + one / 70 + 1
-e3) Cambia tu programa para que acepte cualquier número entre 0 y 1000.
-
-sayItWithWords(500) => //output five hundred , five hundred  / 500
-sayItWithWords(233) => //output two hundred thirty three, two hundred + thirty + three/ 200 + 30 + 3
-sayItWithWords(498) => //output four hundred ninety eight, four hundred + ninety + eight/ 400 + 90 + 8
 f) Recibiendo el siguiente texto por parámetro a tu función... :
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.
+
 Prepara dicha función para que modifique y devuelva el texto bajo estas reglas: Signos de puntuación: -	"." => "," - "," => "" Palabras: - "dolor" => "potato" - "lorem" => "tomato" - "labor" => "cucumber" - "consequatur" => "garlic" - "ipsum" => "onion"
 
 f1) Añade una funcionalidad que cuente cuantos cambios/coincidencias ha encontrado de cada palabra, y te los muestre de una forma amigable para el usuario */
