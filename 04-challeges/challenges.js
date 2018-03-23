@@ -434,21 +434,55 @@ function sayItWithWords3(num) {
         console.log(teens[dec[1]]);
     }else if(dec.length == 2) {
         console.log(tens[dec[0]] + '-' + units[dec[1]] + ', ' + tens[dec[0]] + ' + ' + units[dec[1]] + ' / ' + dec[0] + '0' + ' + ' + dec[1]);
-    }else if(dec.length == 3 && (dec[1] !== 0) && (dec[2] !==0)) {
+    }else if(dec.length == 3 && dec[1] != 0 && dec[2] != 0 && dec[1] > 1) {
         console.log(units[dec[0]] + ' hundred ' + tens[dec[1]] + '-' + units[dec[2]] + ', ' + units[dec[0]] + ' hundred + ' + tens[dec[1]] + ' + ' + units[dec[1]] + ' / ' + dec[0] + '00 + ' + dec[1] + '0' + ' + ' + dec[2]);
-    }
+    }else if(dec[1] == 0 && dec[2] == 0) {
+        console.log(units[dec[0]] + ' hundred, ' + units[dec[0]] + ' hundred ' + ' / ' + dec)
+    }else if(dec[1] == 0) {
+        console.log(units[dec[0]] + ' hundred and ' + units[dec[2]] + ', ' + units[dec[0]] + ' hundred + ' + units[dec[2]] + ' / ' + dec)
+    }else if(dec[1] == 1) {
+        console.log(units[dec[0]] + ' hundred and ' + teens[dec[2]] + ', ' + units[dec[0]] + ' hundred + ' + teens[0] + ' + ' + units[dec[2]] + ' / ' + dec[0] + '00 + ' + dec[1] + '0' + ' + ' + dec[2])
+    }    
 }
 
-sayItWithWords3(500)  //output five hundred , five hundred  / 500
+sayItWithWords3(513)  //output five hundred , five hundred  / 500
 sayItWithWords3(233)  //output two hundred thirty three, two hundred + thirty + three/ 200 + 30 + 3
 sayItWithWords3(498)  //output four hundred ninety eight, four hundred + ninety + eight/ 400 + 90 + 8
 
+
+//f) Recibiendo el siguiente texto por parámetro a tu función... :
+
+/* Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. */
+
+//Prepara dicha función para que modifique y devuelva el texto bajo estas reglas: Signos de puntuación: -	"." => "," - "," => "" Palabras: - "dolor" => "potato" - "lorem" => "tomato" - "labor" => "cucumber" - "consequatur" => "garlic" - "ipsum" => "onion"
+function changeWords(str) {
+    var strL = str.toLowerCase();
+    var str1 = strL.replace(/dolor/g, 'potato');
+    var str2 = str1.replace(/lorem/g, 'tomato');
+    var str3 = str2.replace(/labor/g, 'cucumber');
+    var str4 = str3.replace(/consequatur/g, 'garlic');
+    var str5 = str4.replace(/ipsum/g, 'onion');
+    var str6 = str5.replace(/[.]/g, ',');
+    var str7 = str6.replace(/[,]/g, '');
+    console.log(str7);
+    
+    var matchDol = strL.split("dolor").length - 1;
+    var matchLor = strL.split("lorem").length - 1;
+    var matchLab = strL.split("labor").length - 1;
+    var matchCon = strL.split("consequatur").length - 1;
+    var matchIps = strL.split("ipsum").length - 1;
+    var matchDot = strL.split(".").length - 1;
+    var matchCom = strL.split(",").length - 1;
+
+    console.log('Hemos encontrado ' + matchDol + ' dolor, ' + matchLor + ' lorem, ' + matchLab + ' labor, ' + matchCon + ' consequatur, ' + matchIps + ' ipsum, ' + matchDot + ' puntos y ' + matchCom + ' comas.');
+    
+
+    
+    
+}
+
+changeWords('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.');
+
 /*
-f) Recibiendo el siguiente texto por parámetro a tu función... :
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.
-
-Prepara dicha función para que modifique y devuelva el texto bajo estas reglas: Signos de puntuación: -	"." => "," - "," => "" Palabras: - "dolor" => "potato" - "lorem" => "tomato" - "labor" => "cucumber" - "consequatur" => "garlic" - "ipsum" => "onion"
-
 f1) Añade una funcionalidad que cuente cuantos cambios/coincidencias ha encontrado de cada palabra, y te los muestre de una forma amigable para el usuario */
