@@ -25,6 +25,8 @@ function calculatorPro() {
 
     var numArr = document.getElementById('nums').value;
     var arr;
+
+    
     var screen;
     var screen2;
     var screen3;
@@ -32,7 +34,7 @@ function calculatorPro() {
     
     sumF = function() {
 
-        return arr.reduce(function(a,b){return (a+b).toFixed(3)});
+        return arr.reduce(function(a,b){return (a+b)});
     }
 
     restF = function() {
@@ -69,9 +71,8 @@ function calculatorPro() {
     startCalc();
 
     function resetCalc() {
-        screen.value = "";
-        screen2.value = "";
-        screen3.value = "";
+        document.getElementById('tot').value='';
+
       }
       
   
