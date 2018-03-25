@@ -17,19 +17,17 @@ El programa no debería hacer distinciones entre mayúsculas, minúsculas... Eje
 El programa debe estar preparado para aceptar el input "END" para terminar el juego en cualquier momento, si esto sucede, el programa dirá cuantas letras ha acertado pero no entrará en el ranking.
 Prepara tu programa para que no repita siempre las mismas preguntas, por ejemplo, de la misma letra, se podrían hacer tres preguntas diferentes.
 Ejemplo de preguntas y respuestas: made by => www.github.com/misan7
-*/
+
+
+myVar = setTimeout(function, milliseconds);
+clearTimeout(myVar);   */
 
 function pasapalabraPro() {
 
     
     var players = [];
     var playerName;
-    var myTimeOut;
    
-
-    
-
-
 
     function newGame() {
 
@@ -79,56 +77,43 @@ function pasapalabraPro() {
         var incorrects = 0;
         var points = 0;
         var count = 27;
+           
+                
+        var que = questions[0].question;
+        console.log(que);
+        window.document.getElementById("que").innerHTML = que;
+        var askFor = document.getElementById('queInput').innerHTML.value;
 
+        timer2 = setTimeout(askT, 5000);
         
-        // set interval
-        var tid = setInterval(mycode, 5000);
-        function mycode() {
-        // do some stuff...
-        // no need to recall the function (it's an interval, it'll loop forever)
-            for(var i=0; i<questions.length; i++) {
-                    
-                
-                var que = questions[i].question;
-                console.log(que);
-                window.document.getElementById("que").innerHTML = que;
-                var askFor = document.getElementById('queInput').innerHTML.value;
-                if(questions[i].status == 0 || questions[i].status == 3) {
-                
-                    if(askFor == questions[i].answer) {
+        function askT() {
 
-                        points++;
-                        count--;
-                        questions[i].status = 1;
-                        corrects.push(questions[i].letter);
-                        alert('Correct, you have ' + points + ' Point!');
-
-                    }else if (askFor == 'pasapalabra') {
-
-                        questions[i].status = 3;
-                        alert('Pasapalabra');
-                        
-                    
-                    }else if(askFor !== 'pasapalabra' || askFor !== questions[i].answer){
-
-                        questions[i].status = 2;
-                        incorrects++;
-                        count--;
+            if(questions[0].status == 0 || questions[0].status == 3) {
+        
+                if(askFor == questions[0].answer) {
     
-                    }
-                } 
-                
-                
+                    points++;
+                    count--;
+                    questions[0].status = 1;
+                    corrects.push(questions[0].letter);
+                    alert('Correct, you have ' + points + ' Point!');
+    
+                }else if (askFor == 'pasapalabra') {
+    
+                    questions[0].status = 3;
+                    alert('Pasapalabra');
                     
-            
-            }
+                
+                }else if(askFor !== 'pasapalabra' || askFor !== questions[0].answer){
+    
+                    questions[0].status = 2;
+                    incorrects++;
+                    count--;
+    
+                }
+            } 
         }
-        function abortTimer() { // to be called when you want to stop the timer
-        clearInterval(tid);
-        }
-        
-
-       
+                   
    
      /*    while(count > 0) {
 
