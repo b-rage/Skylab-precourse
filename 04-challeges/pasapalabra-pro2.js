@@ -29,14 +29,19 @@ function pasapalabraPro() {
     var playerName;
    
 
-    function newGame() {
 
-        playerName = document.getElementById('nome').innerHTML.value;
-        var timer = setTimeout(ask, 6000);
-       
+    this.newGame = function() {      // call function inside function HTML
+            playerName = document.querySelector('#nome').value;
+            var elem = document.getElementById("divName");     // remove div
+            elem.parentElement.removeChild(elem);
+            var timer = setTimeout(ask, 2000);
+            
     }
-
-    newGame();
+    return this;
+    
+    
+        
+ 
     
     
 
@@ -77,42 +82,48 @@ function pasapalabraPro() {
         var incorrects = 0;
         var points = 0;
         var count = 27;
-           
-                
-        var que = questions[0].question;
-        console.log(que);
-        window.document.getElementById("que").innerHTML = que;
-        var askFor = document.getElementById('queInput').innerHTML.value;
-
-        timer2 = setTimeout(askT, 5000);
         
-        function askT() {
-
-            if(questions[0].status == 0 || questions[0].status == 3) {
         
-                if(askFor == questions[0].answer) {
-    
-                    points++;
-                    count--;
-                    questions[0].status = 1;
-                    corrects.push(questions[0].letter);
-                    alert('Correct, you have ' + points + ' Point!');
-    
-                }else if (askFor == 'pasapalabra') {
-    
-                    questions[0].status = 3;
-                    alert('Pasapalabra');
-                    
-                
-                }else if(askFor !== 'pasapalabra' || askFor !== questions[0].answer){
-    
-                    questions[0].status = 2;
-                    incorrects++;
-                    count--;
-    
+        //while(count > 0) {     
+
+            //for(var i=0; i<questions.length; i++) {
+
+                function customLoop(i) {
+                    var que = questions[i].question;
+                    console.log(que);
+                    document.getElementById("que").innerHTML = que;
+                    i++;
+                    if (i<=27) {setTimeout(function(){customLoop(i);},25000);}
                 }
-            } 
-        }
+                customLoop(0);      
+               
+                var askFor = document.querySelector('#queInput').value;
+                if(questions[0].status == 0 || questions[0].status == 3) {
+            
+                    if(askFor == questions[0].answer) {
+        
+                        points++;
+                        count--;
+                        questions[0].status = 1;
+                        corrects.push(questions[0].letter);
+                        alert('Correct, you have ' + points + ' Point!');
+        
+                    }else if (askFor == 'pasapalabra') {
+        
+                        questions[0].status = 3;
+                        alert('Pasapalabra');
+                        
+                    
+                    }else if(askFor !== 'pasapalabra' || askFor !== questions[0].answer){
+        
+                        questions[0].status = 2;
+                        incorrects++;
+                        count--;
+        
+                    }
+                }
+            //}
+        //}
                    
    
      /*    while(count > 0) {
