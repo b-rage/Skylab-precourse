@@ -1,5 +1,5 @@
 
-
+//        OKKKKKKKKKKK
 /*
 Podrías hacer que le calculadora relizara operaciones sean cuales sean el numero de argumentos pasados a la funcion? Hint => https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments Hint => https://msdn.microsoft.com/es-es/library/he95z461
 function sum(){
@@ -26,7 +26,7 @@ prompt("New numbers? y/n")
         
         sumF = function() {
     
-            return arr.reduce(function(a,b){return (a+b).toFixed(3)});
+            return arr.reduce(function(a,b){return (a+b)});
         }
     
         restF = function() {
