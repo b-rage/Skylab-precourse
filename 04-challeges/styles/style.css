@@ -25,3 +25,11 @@ li {
 ul {
     list-style: none;
 }
+
+#queInput {
+    margin-bottom: 25px;
+}
+
+label {
+    font-size: 30px; 
+}

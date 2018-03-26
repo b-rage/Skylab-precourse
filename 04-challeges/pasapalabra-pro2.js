@@ -24,11 +24,8 @@ clearTimeout(myVar);   */
 
 function pasapalabraPro() {
 
-    
     var players = [];
     var playerName;
-   
-
 
     this.newGame = function() {      // call function inside function HTML
             playerName = document.querySelector('#nome').value;
@@ -40,11 +37,6 @@ function pasapalabraPro() {
     return this;
     
     
-        
- 
-    
-    
-
     function ask() {
 
         var questions = [
@@ -77,55 +69,64 @@ function pasapalabraPro() {
             { letter: "z", answer: "zen", status: 0, question: ("CON LA Z. Escuela de budismo que busca la experiencia de la sabiduría más allá del discurso racional") },
         ];
 
- 
         var corrects = [];
         var incorrects = 0;
         var points = 0;
         var count = 27;
+        var askFor;
         
-        
+            
         //while(count > 0) {     
-
-           
 
             function questionLoop(i) {
                 var que = questions[i].question;
                 console.log(que);
                 document.getElementById("que").innerHTML = que;
-                function answ() {
-                    var askFor = document.querySelector('#queInput').value;
-                    if(questions[0].status == 0 || questions[0].status == 3) {
-        
-                        if(askFor == questions[0].answer) {
+                var button = document.getElementById("btnValue");
+                button.onclick = function() {
+                    askFor = document.querySelector('#queInput').value;
+                    clearTimeout(timerLoop);
+                    console.log(askFor);
+                    answMatch();
+                    }                 
+            
+                function answMatch() {
+
+                    if(questions[i].status == 0 || questions[i].status == 3) {
+
+                        if(askFor == questions[i].answer) {
             
                             points++;
                             count--;
-                            questions[0].status = 1;
-                            corrects.push(questions[0].letter);
+                            questions[i].status = 1;
+                            corrects.push(questions[i].letter);
                             alert('Correct, you have ' + points + ' Point!');
+                            
             
                         }else if (askFor == 'pasapalabra') {
             
-                            questions[0].status = 3;
+                            questions[i].status = 3;
                             alert('Pasapalabra');
                             
+                            
                         
-                        }else if(askFor !== 'pasapalabra' || askFor !== questions[0].answer){
-            
-                            questions[0].status = 2;
+                        }else if(askFor !== 'pasapalabra' || askFor !== questions[i].answer){
+                           
+                            questions[i].status = 2;
                             incorrects++;
                             count--;
-            
+                            console.log(incorrects);
+                            
                         }
                     }
                 }
+                
+                
                 i++;
-                if (i<=27) {setTimeout(function(){questionLoop(i);},25000);}
+                if (i<=26) {var timerLoop = setTimeout(function(){questionLoop(i);},25000);}
+                console.log(questions[i].status);
             }
-            questionLoop(0);      
-               
-                
-                
+            questionLoop(0);              
            
         //}
 
