@@ -86,43 +86,47 @@ function pasapalabraPro() {
         
         //while(count > 0) {     
 
-            //for(var i=0; i<questions.length; i++) {
+           
 
-                function customLoop(i) {
-                    var que = questions[i].question;
-                    console.log(que);
-                    document.getElementById("que").innerHTML = que;
-                    i++;
-                    if (i<=27) {setTimeout(function(){customLoop(i);},25000);}
-                }
-                customLoop(0);      
-               
-                var askFor = document.querySelector('#queInput').value;
-                if(questions[0].status == 0 || questions[0].status == 3) {
+            function customLoop(i) {
+                var que = questions[i].question;
+                console.log(que);
+                document.getElementById("que").innerHTML = que;
+                function answ() {
+                    var askFor = document.querySelector('#queInput').value;
+                    if(questions[0].status == 0 || questions[0].status == 3) {
+        
+                        if(askFor == questions[0].answer) {
             
-                    if(askFor == questions[0].answer) {
-        
-                        points++;
-                        count--;
-                        questions[0].status = 1;
-                        corrects.push(questions[0].letter);
-                        alert('Correct, you have ' + points + ' Point!');
-        
-                    }else if (askFor == 'pasapalabra') {
-        
-                        questions[0].status = 3;
-                        alert('Pasapalabra');
+                            points++;
+                            count--;
+                            questions[0].status = 1;
+                            corrects.push(questions[0].letter);
+                            alert('Correct, you have ' + points + ' Point!');
+            
+                        }else if (askFor == 'pasapalabra') {
+            
+                            questions[0].status = 3;
+                            alert('Pasapalabra');
+                            
                         
-                    
-                    }else if(askFor !== 'pasapalabra' || askFor !== questions[0].answer){
-        
-                        questions[0].status = 2;
-                        incorrects++;
-                        count--;
-        
+                        }else if(askFor !== 'pasapalabra' || askFor !== questions[0].answer){
+            
+                            questions[0].status = 2;
+                            incorrects++;
+                            count--;
+            
+                        }
                     }
                 }
-            //}
+                i++;
+                if (i<=27) {setTimeout(function(){customLoop(i);},25000);}
+            }
+            customLoop(0);      
+               
+                
+                
+           
         //}
                    
    
