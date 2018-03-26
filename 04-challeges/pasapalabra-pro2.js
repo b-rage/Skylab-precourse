@@ -34,7 +34,7 @@ function pasapalabraPro() {
             playerName = document.querySelector('#nome').value;
             var elem = document.getElementById("divName");     // remove div
             elem.parentElement.removeChild(elem);
-            var timer = setTimeout(ask, 2000);
+            ask();
             
     }
     return this;
@@ -88,7 +88,7 @@ function pasapalabraPro() {
 
            
 
-            function customLoop(i) {
+            function questionLoop(i) {
                 var que = questions[i].question;
                 console.log(que);
                 document.getElementById("que").innerHTML = que;
@@ -120,59 +120,14 @@ function pasapalabraPro() {
                     }
                 }
                 i++;
-                if (i<=27) {setTimeout(function(){customLoop(i);},25000);}
+                if (i<=27) {setTimeout(function(){questionLoop(i);},25000);}
             }
-            customLoop(0);      
+            questionLoop(0);      
                
                 
                 
            
         //}
-                   
-   
-     /*    while(count > 0) {
-
-            
-
-            for(var i=0; i<questions.length; i++) {
-                
-               
-
-                function quesT() {
-                    var que = questions[0].question;
-                    console.log(que);
-                    window.document.getElementById("que").innerHTML = que;
-                    var askFor = document.getElementById('queInput').innerHTML.value;
-                     if(questions[i].status == 0 || questions[i].status == 3) {
-                    
-                        if(askFor == questions[i].answer) {
-    
-                            points++;
-                            count--;
-                            questions[i].status = 1;
-                            corrects.push(questions[i].letter);
-                            alert('Correct, you have ' + points + ' Point!');
-    
-                        }else if (askFor == 'pasapalabra') {
-    
-                            questions[i].status = 3;
-                            alert('Pasapalabra');
-                            
-                        
-                        }else if(askFor !== 'pasapalabra' || askFor !== questions[i].answer){
-    
-                            questions[i].status = 2;
-                            incorrects++;
-                            count--;
-        
-                        }
-                    } 
-                }
-                
-                    
-            
-            }
-        } */
 
         var timer2 = setTimeout(resultT, 60000);
         function resultT() {
@@ -193,7 +148,7 @@ function pasapalabraPro() {
             }
         }
     }
-
+    
 
     function ranking() {
 
