@@ -27,6 +27,7 @@ function pasapalabraPro() {
     var players = [];
     var playerName;
 
+
     this.newGame = function() {      // call function inside function HTML
             playerName = document.querySelector('#nome').value;
             var elem = document.getElementById("divName");     // remove div
@@ -87,11 +88,6 @@ function pasapalabraPro() {
                     askFor = document.querySelector('#queInput').value;
                     clearTimeout(timerLoop);
                     console.log(askFor);
-                    answMatch();
-                    }                 
-            
-                function answMatch() {
-
                     if(questions[i].status == 0 || questions[i].status == 3) {
 
                         if(askFor == questions[i].answer) {
@@ -100,31 +96,38 @@ function pasapalabraPro() {
                             count--;
                             questions[i].status = 1;
                             corrects.push(questions[i].letter);
+                            questions.pop(questions[i]);
                             alert('Correct, you have ' + points + ' Point!');
+                            questionLoop(0);
                             
             
                         }else if (askFor == 'pasapalabra') {
             
                             questions[i].status = 3;
                             alert('Pasapalabra');
+                            questionLoop(0);
                             
                             
                         
                         }else if(askFor !== 'pasapalabra' || askFor !== questions[i].answer){
-                           
+                            
                             questions[i].status = 2;
+                            questions.pop(questions[i]);
                             incorrects++;
                             count--;
-                            console.log(incorrects);
+                            questionLoop(0);
                             
                         }
                     }
-                }
-                
-                
+                       
                 i++;
-                if (i<=26) {var timerLoop = setTimeout(function(){questionLoop(i);},25000);}
-                console.log(questions[i].status);
+                if (i<=26) {var timerLoop = setTimeout(function(){questionLoop(i);},10000);}    
+                    
+                }                 
+                
+                
+
+                
             }
             questionLoop(0);              
            
@@ -135,7 +138,7 @@ function pasapalabraPro() {
             players.push({name: playerName, points: points});
             console.log(players);
             
-            console.log('Game Over!!' + playerName + ' has fallado ' + incorrects + ' letras, Has acertado esas letras: ' + corrects + ' tienes ' + points + ' puntos' );
+            console.log('Game Over!!' + playerName + ' has fallado ' + incorrects + ' letras, Has acertado esas letras: ' + corrects + ' - tienes ' + points + ' puntos' );
             var newPlayer = prompt('otro jugador? Y/N');
             switch(newPlayer) {
                 case 'y':
