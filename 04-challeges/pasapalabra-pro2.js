@@ -128,8 +128,61 @@ function pasapalabraPro() {
             
         //while(count > 0) {     
            
+            function letterFunc(i) {
 
-            function letterFunc() {
+                var que = questions[i].question;
+                if(questions[i].status == 0 || questions[i].status == 3) {
+                    document.getElementById("que").innerHTML = que;
+                }
+
+                var button = document.getElementById("btnValue");
+                button.onclick = function() {
+                    answ = document.querySelector('#queInput').value;
+                    clearTimeout(timerLoop); 
+                    if(questions[i].status == 0 || questions[i].status == 3) {
+
+                        if(answ == questions[i].answer) {
+            
+                            points++;
+                            count--;
+                            questions[i].status = 1;
+                            corrects.push(questions[i].letter);
+                            questions.pop(questions[i]);
+                            alert('Correct, you have ' + points + ' Point!');
+                            
+                            
+            
+                        }else if (answ == 'pasapalabra') {
+            
+                            questions[i].status = 3;
+                            alert('Pasapalabra');
+                            
+                            
+                            
+                        
+                        }else if(answ !== 'pasapalabra' || answ !== questions[i].answer){
+                            
+                            questions[i].status = 2;
+                            questions.pop(questions[i]);
+                            incorrects++;
+                            count--;
+                            
+                            
+                        }
+                    }
+                     
+                i++;
+                if (i<=26) {timerLoop = setTimeout(function(){letterFunc(i);},10000);}    
+  
+                }                 
+               
+            }
+            letterFunc(0); 
+
+
+
+
+           /*  function letterFunc() {
 
                 var que = questions[i].question;
                 if(questions[i].status == 0 || questions[i].status == 3) {
@@ -171,7 +224,7 @@ function pasapalabraPro() {
                     }
 
                 }
-            }
+            } */
                
             
                         
