@@ -18,52 +18,58 @@ El programa debe estar preparado para aceptar el input "END" para terminar el ju
 Prepara tu programa para que no repita siempre las mismas preguntas, por ejemplo, de la misma letra, se podrían hacer tres preguntas diferentes.
 Ejemplo de preguntas y respuestas: made by => www.github.com/misan7
 
-function questionLoop(i) {
+function letterFunc(i) {
+
                 var que = questions[i].question;
-                document.getElementById("que").innerHTML = que;
+                if(questions[i].status == 0 || questions[i].status == 3) {
+                    document.getElementById("que").innerHTML = que;
+                }
+
                 var button = document.getElementById("btnValue");
                 button.onclick = function() {
-                    askFor = document.querySelector('#queInput').value;
-                    clearTimeout(timerLoop); 
+                    answ = document.querySelector('#queInput').value;
                     if(questions[i].status == 0 || questions[i].status == 3) {
 
-                        if(askFor == questions[i].answer) {
+                        if(answ == questions[i].answer) {
             
                             points++;
                             count--;
                             questions[i].status = 1;
                             corrects.push(questions[i].letter);
                             questions.pop(questions[i]);
+                            clearTimeout(timerLoop); 
                             alert('Correct, you have ' + points + ' Point!');
-                            questionLoop(0);
+                            
                             
             
-                        }else if (askFor == 'pasapalabra') {
+                        }else if (answ == 'pasapalabra') {
             
                             questions[i].status = 3;
+                            clearTimeout(timerLoop); 
                             alert('Pasapalabra');
-                            questionLoop(0);
+                            
                             
                             
                         
-                        }else if(askFor !== 'pasapalabra' || askFor !== questions[i].answer){
+                        }else if(answ !== 'pasapalabra' || answ !== questions[i].answer){
                             
                             questions[i].status = 2;
                             questions.pop(questions[i]);
+                            clearTimeout(timerLoop); 
                             incorrects++;
                             count--;
-                            questionLoop(0);
+                            
                             
                         }
                     }
                      
                 i++;
-                if (i<=26) {timerLoop = setTimeout(function(){questionLoop(i);},10000);}    
+                if (i<=26) {timerLoop = setTimeout(function(){letterFunc(i);},10000);}    
   
                 }                 
                
             }
-            questionLoop(0); 
+            letterFunc(0);
 
 myVar = setTimeout(function, milliseconds);
 clearTimeout(timerLoop);   */
@@ -138,7 +144,6 @@ function pasapalabraPro() {
                 var button = document.getElementById("btnValue");
                 button.onclick = function() {
                     answ = document.querySelector('#queInput').value;
-                    clearTimeout(timerLoop); 
                     if(questions[i].status == 0 || questions[i].status == 3) {
 
                         if(answ == questions[i].answer) {
@@ -173,7 +178,7 @@ function pasapalabraPro() {
                      
                 i++;
                 if (i<=26) {timerLoop = setTimeout(function(){letterFunc(i);},10000);}    
-  
+
                 }                 
                
             }
