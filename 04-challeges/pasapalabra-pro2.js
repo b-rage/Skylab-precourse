@@ -18,18 +18,22 @@ El programa debe estar preparado para aceptar el input "END" para terminar el ju
 Prepara tu programa para que no repita siempre las mismas preguntas, por ejemplo, de la misma letra, se podrían hacer tres preguntas diferentes.
 Ejemplo de preguntas y respuestas: made by => www.github.com/misan7
 
-function letterFunc(i) {
 
+while(count > 0) {      
+                
+            for(var i=0; i < 27; i++) {
+
+                
                 var que = questions[i].question;
                 if(questions[i].status == 0 || questions[i].status == 3) {
                     document.getElementById("que").innerHTML = que;
                 }
-
+    
                 var button = document.getElementById("btnValue");
                 button.onclick = function() {
                     answ = document.querySelector('#queInput').value;
                     if(questions[i].status == 0 || questions[i].status == 3) {
-
+    
                         if(answ == questions[i].answer) {
             
                             points++;
@@ -37,7 +41,6 @@ function letterFunc(i) {
                             questions[i].status = 1;
                             corrects.push(questions[i].letter);
                             questions.pop(questions[i]);
-                            clearTimeout(timerLoop); 
                             alert('Correct, you have ' + points + ' Point!');
                             
                             
@@ -45,7 +48,6 @@ function letterFunc(i) {
                         }else if (answ == 'pasapalabra') {
             
                             questions[i].status = 3;
-                            clearTimeout(timerLoop); 
                             alert('Pasapalabra');
                             
                             
@@ -55,21 +57,17 @@ function letterFunc(i) {
                             
                             questions[i].status = 2;
                             questions.pop(questions[i]);
-                            clearTimeout(timerLoop); 
                             incorrects++;
                             count--;
                             
                             
                         }
                     }
-                     
-                i++;
-                if (i<=26) {timerLoop = setTimeout(function(){letterFunc(i);},10000);}    
-  
-                }                 
-               
-            }
-            letterFunc(0);
+                }
+
+            }                      
+            
+        }
 
 myVar = setTimeout(function, milliseconds);
 clearTimeout(timerLoop);   */
@@ -81,14 +79,14 @@ function pasapalabraPro() {
     
 
 
-    this.newGame = function() {      // call function inside function HTML
+    this.newGame = function() {      
             playerName = document.querySelector('#nome').value;
             var elem = document.getElementById("divName");     // remove div
             elem.parentElement.removeChild(elem);
             var resp = document.getElementById("resp");
             resp.style.display = "block";
             starT();
-            
+            console.log('cvb');
     }
     return this;
     
@@ -129,112 +127,53 @@ function pasapalabraPro() {
         var points = 0;
         var count = 27;
         var answ;
-        var timerLoop;
+
         
-            
-        //while(count > 0) {     
-           
-            function letterFunc(i) {
+        /* while(count > 0) {
+
+            for(var i=0; i<questions.length; i++) {
+
+               
+                
 
                 var que = questions[i].question;
-                if(questions[i].status == 0 || questions[i].status == 3) {
-                    document.getElementById("que").innerHTML = que;
-                }
-
+                document.getElementById("que").innerHTML = que;
                 var button = document.getElementById("btnValue");
                 button.onclick = function() {
+
                     answ = document.querySelector('#queInput').value;
                     if(questions[i].status == 0 || questions[i].status == 3) {
 
+
                         if(answ == questions[i].answer) {
-            
+    
                             points++;
                             count--;
                             questions[i].status = 1;
                             corrects.push(questions[i].letter);
-                            questions.pop(questions[i]);
                             alert('Correct, you have ' + points + ' Point!');
-                            
-                            
-            
+    
                         }else if (answ == 'pasapalabra') {
-            
+    
                             questions[i].status = 3;
                             alert('Pasapalabra');
                             
-                            
-                            
                         
                         }else if(answ !== 'pasapalabra' || answ !== questions[i].answer){
-                            
+    
                             questions[i].status = 2;
-                            questions.pop(questions[i]);
                             incorrects++;
                             count--;
-                            
-                            
+         
                         }
                     }
-                     
-                i++;
-                if (i<=26) {timerLoop = setTimeout(function(){letterFunc(i);},10000);}    
-
-                }                 
+                }
+                    
                
             }
-            letterFunc(0); 
+        } */
+        
 
-
-
-
-           /*  function letterFunc() {
-
-                var que = questions[i].question;
-                if(questions[i].status == 0 || questions[i].status == 3) {
-                    document.getElementById("que").innerHTML = que;
-                }
-
-                var button = document.getElementById("btnValue");
-                button.onclick = function() {
-                    answ = document.querySelector('#queInput').value;
-                    clearTimeout(timerLoop); 
-                    if(questions[i].status == 0 || questions[i].status == 3) {
-
-                        if(answ == questions[i].answer) {
-            
-                            points++;
-                            count--;
-                            questions[i].status = 1;
-                            corrects.push(questions[i].letter);
-                            alert('Correct, you have ' + points + ' Point!');
-                            questionLoop(0);
-                            
-            
-                        }else if(answ == 'pasapalabra') {
-            
-                            questions[i].status = 3;
-                            alert('Pasapalabra');
-                            questionLoop(0);
-                            
-                            
-                        
-                        }else if(answ !== 'pasapalabra' || answ !== questions[i].answer){
-                            
-                            questions[i].status = 2;
-                            incorrects++;
-                            count--;
-                            questionLoop(0);
-                            
-                        }
-                    }
-
-                }
-            } */
-               
-            
-                        
-           
-        //}
 
         var timer2 = setTimeout(resultT, 60000);
         function resultT() {
