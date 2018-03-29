@@ -127,8 +127,64 @@ function pasapalabraPro() {
         var points = 0;
         var count = 27;
         var answ;
+        var i=0;
 
-        
+        function loopLetter() {
+
+            if(count>0 && (questions[i].status == 0 || questions[i].status == 3)) {
+                    var que = questions[i].question;
+                    document.getElementById("que").innerHTML = que;
+                    var button = document.getElementById("btnValue");
+                    button.onclick = function() {
+
+                        answ = document.querySelector('#queInput').value;
+                        if(questions[i].status == 0 || questions[i].status == 3) {
+
+
+                            if(answ == questions[i].answer) {
+
+                                points++;
+                                count--;
+                                questions[i].status = 1;
+                                corrects.push(questions[i].letter);
+                                console.log(questions[i].status);                               
+                                alert('Correct, you have ' + points + ' Point!');
+
+                            }else if (answ == 'pasapalabra') {
+
+                                questions[i].status = 3;
+                                console.log(questions[i].status); 
+                                alert('Pasapalabra');
+                                
+                            
+                            }else if(answ !== 'pasapalabra' || answ !== questions[i].answer){
+
+                                questions[i].status = 2;
+                                incorrects++;
+                                count--;
+                                console.log(questions[i].status); 
+                
+                            }
+                        }else{
+                            console.log('cia');
+                            
+                            resultT();
+                        }
+                        if(i>=26) {
+                            i=0;
+                            loopLetter();
+                        }else{
+                            i++;
+                            loopLetter();
+                        }
+                        
+                    }
+            }else{
+                console.log('jjj');
+                resultT();
+                }
+        }
+        loopLetter();
         /* while(count > 0) {
 
             for(var i=0; i<questions.length; i++) {
@@ -175,7 +231,7 @@ function pasapalabraPro() {
         
 
 
-        var timer2 = setTimeout(resultT, 60000);
+        
         function resultT() {
             players.push({name: playerName, points: points});
             console.log(players);
