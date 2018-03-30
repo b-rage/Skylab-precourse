@@ -139,7 +139,6 @@ function calculatorPro() {
 
 calculatorPro(18, 3, 2);
 calculatorPro(0);
-calculatorPro();
 calculatorPro(0, 0);
 calculatorPro("Pepe");
 calculatorPro("Pepe", "Antonio");
