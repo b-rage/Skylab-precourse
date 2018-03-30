@@ -19,23 +19,16 @@ Prepara tu programa para que no repita siempre las mismas preguntas, por ejemplo
 Ejemplo de preguntas y respuestas: made by => www.github.com/misan7
 */
 
-function pasapalabraPro() {
+function pasapalabra() {
 
     
     var players = [];
     var playerName;
-    var myTimeOut;
-   
-
-    
-
-
 
     function newGame() {
 
-        playerName = document.getElementById('nome').innerHTML.value;
-        var timer = setTimeout(ask, 6000);
-       
+        playerName = prompt('Introducir tu nombre');
+        ask();
     }
 
     newGame();
@@ -74,73 +67,59 @@ function pasapalabraPro() {
             { letter: "z", answer: "zen", status: 0, question: ("CON LA Z. Escuela de budismo que busca la experiencia de la sabiduría más allá del discurso racional") },
         ];
 
-        //clearTimeout(timer);
+      
         var corrects = [];
         var incorrects = 0;
         var points = 0;
         var count = 27;
-   
+
+
         while(count > 0) {
 
-            
-
             for(var i=0; i<questions.length; i++) {
-                
-                var timer3 = setTimeout(quesT, 5000);
 
-                function quesT() {
-                    var que = questions[i].question;
-                    console.log(que);
-                    window.document.getElementById("que").innerHTML = que;
-                    var askFor = document.getElementById('queInput').innerHTML.value;
-                    if(questions[i].status == 0 || questions[i].status == 3) {
-                    
-                        if(askFor == questions[i].answer) {
+                if(questions[i].status == 0 || questions[i].status == 3) {
     
-                            points++;
-                            count--;
-                            questions[i].status = 1;
-                            corrects.push(questions[i].letter);
-                            alert('Correct, you have ' + points + ' Point!');
-    
-                        }else if (askFor == 'pasapalabra') {
-    
-                            questions[i].status = 3;
-                            alert('Pasapalabra');
-                            
+                    var askFor = prompt(questions[i].question);
+                    if(askFor == questions[i].answer) {
+
+                        points++;
+                        count--;
+                        questions[i].status = 1;
+                        corrects.push(questions[i].letter);
+                        alert('Correct, you have ' + points + ' Point!');
+
+                    }else if (askFor == 'pasapalabra') {
+
+                        questions[i].status = 3;
+                        alert('Pasapalabra');
                         
-                        }else if(askFor !== 'pasapalabra' || askFor !== questions[i].answer){
-    
-                            questions[i].status = 2;
-                            incorrects++;
-                            count--;
-        
-                        }
+                    
+                    }else if(askFor !== 'pasapalabra' || askFor !== questions[i].answer){
+
+                        questions[i].status = 2;
+                        incorrects++;
+                        count--;
+     
                     }
                 }
-                
                     
-            
+               
             }
         }
+        players.push({name: playerName, points: points});
+        console.log(players);
+        
+        console.log('Game Over!!' + playerName + ' has fallado ' + incorrects + ' letras, Has acertado esas letras: ' + corrects + ' tienes ' + points + ' puntos' );
+        var newPlayer = prompt('otro jugador? Y/N');
+        switch(newPlayer) {
+            case 'y':
+                newGame();
+                break;
+            case 'n':
+                ranking();
+                break;
 
-        var timer2 = setTimeout(resultT, 60000);
-        function resultT() {
-            players.push({name: playerName, points: points});
-            console.log(players);
-            
-            console.log('Game Over!!' + playerName + ' has fallado ' + incorrects + ' letras, Has acertado esas letras: ' + corrects + ' tienes ' + points + ' puntos' );
-            var newPlayer = prompt('otro jugador? Y/N');
-            switch(newPlayer) {
-                case 'y':
-                    newGame();
-                    break;
-                case 'n':
-                    ranking();
-                    break;
-
-            
-            }
         }
     }
 
@@ -174,4 +153,4 @@ function pasapalabraPro() {
 
 }
 
-pasapalabraPro();
+pasapalabra();
