@@ -28,14 +28,16 @@ function pasapalabra() {
     function newGame() {
 
         playerName = prompt('Introducir tu nombre');
-        ask();
+        startGame();
     }
 
     newGame();
     
     
 
-    function ask() {
+    function startGame() {
+
+        
 
         var questions = [
             { letter: "a", answer: "abducir", status: 0, question: ("CON LA A. Dicho de una supuesta criatura extraterrestre: Apoderarse de alguien") },
@@ -66,22 +68,32 @@ function pasapalabra() {
             { letter: "y", answer: "peyote", status: 0, question: ("CONTIENE LA Y. Pequeño cáctus conocido por sus alcaloides psicoactivos utilizado de forma ritual y medicinal por indígenas americanos") },
             { letter: "z", answer: "zen", status: 0, question: ("CON LA Z. Escuela de budismo que busca la experiencia de la sabiduría más allá del discurso racional") },
         ];
-
-      
         var corrects = [];
         var incorrects = 0;
         var points = 0;
         var count = 27;
+        var count2 = 0;
+        var answ;
 
 
         while(count > 0) {
 
+            var timer = setTimeout(endTimer, 6000);
+            
             for(var i=0; i<questions.length; i++) {
 
+                
+
                 if(questions[i].status == 0 || questions[i].status == 3) {
-    
+                    
                     var askFor = prompt(questions[i].question);
-                    if(askFor == questions[i].answer) {
+                    answ = askFor.toLowerCase();
+                    if(answ == 'end') {
+                            count = 0;
+                            count2 = 1;
+                            resultEnd();
+                            break;
+                    }else if(answ == questions[i].answer) {
 
                         points++;
                         count--;
@@ -89,13 +101,13 @@ function pasapalabra() {
                         corrects.push(questions[i].letter);
                         alert('Correct, you have ' + points + ' Point!');
 
-                    }else if (askFor == 'pasapalabra') {
+                    }else if (answ == 'pasapalabra') {
 
                         questions[i].status = 3;
                         alert('Pasapalabra');
                         
                     
-                    }else if(askFor !== 'pasapalabra' || askFor !== questions[i].answer){
+                    }else if(answ !== 'pasapalabra' || answ !== questions[i].answer){
 
                         questions[i].status = 2;
                         incorrects++;
@@ -106,21 +118,54 @@ function pasapalabra() {
                     
                
             }
+            
         }
-        players.push({name: playerName, points: points});
-        console.log(players);
-        
-        console.log('Game Over!!' + playerName + ' has fallado ' + incorrects + ' letras, Has acertado esas letras: ' + corrects + ' tienes ' + points + ' puntos' );
-        var newPlayer = prompt('otro jugador? Y/N');
-        switch(newPlayer) {
-            case 'y':
-                newGame();
-                break;
-            case 'n':
-                ranking();
-                break;
 
+        if(count == 0 && count2 == 0) {
+            resultT();
         }
+        
+
+        var resultT = function() {
+            players.push({name: playerName, points: points});
+            console.log('Game Over!!' + playerName + ' has fallado ' + incorrects + ' letras, Has acertado ' + points + ' letras: ' + corrects + ' - tienes ' + points + ' puntos' );
+            var newPlayer = prompt('otro jugador? y/n');
+            switch(newPlayer) {
+                case 'y':
+                    newGame();
+                    break;
+                case 'n':
+                    ranking();
+                    break;
+
+            
+            }
+        }
+
+        function resultEnd() {
+            players.push({name: playerName, points: points});
+            console.log('Game Over!!' + playerName + ' has fallado ' + incorrects + ' letras, Has acertado ' + points + ' letras: ' + corrects + ' - tienes ' + points + ' puntos' );
+            /* var newPlayer = prompt('otro jugador? y/n');
+            switch(newPlayer) {
+                case 'y':
+                    newGame();
+                    break;
+                case 'n':
+                    console.log('Juego Terminado!!');
+                    break;
+    
+            
+            } */
+        }
+
+        function endTimer() {
+            count = 0;
+            count2 = 1;
+            resulT();
+            break;
+            
+        }
+
     }
 
 
@@ -141,6 +186,8 @@ function pasapalabra() {
 
         var rankPoints = players.sort(sort_by('points', true, parseInt));   // Sort by price high to low
         var revRankPoints = rankPoints.reverse();
+        console.log('Clasificación');
+        
         revRankPoints.forEach(function(obj){
 
             console.log(obj.name + ' => ' + obj.points + ' puntos');
@@ -148,8 +195,7 @@ function pasapalabra() {
             
             
        
-    }
-
+    }    
 
 }
 
