@@ -158,11 +158,7 @@ function pasapalabra() {
         function getRandomInt(max) {
             return Math.floor(Math.random() * Math.floor(max));
           }
-        var timer = setTimeout(() => {
-            return endTimer();
-            console.log('endtimer');
-            
-        }, 6000);
+        var timer = setTimeout(endTimer, 6);
         
         
         while(count > 0) {
@@ -181,7 +177,6 @@ function pasapalabra() {
                     if(answ == 'end') {
                             count = 0;
                             count2 = 1;
-                            console.log(count2);
                             clearTimeout(timer);
                             console.log('Game Over!!' + playerName + ' has fallado ' + incorrects + ' letras, Has acertado ' + points + ' letras: ' + corrects + ' - tienes ' + points + ' puntos' );
                             break;
@@ -240,21 +235,6 @@ function pasapalabra() {
             }
         }
 
-        function resultEnd() {
-            players.push({name: playerName, points: points});
-            console.log('Game Over!!' + playerName + ' has fallado ' + incorrects + ' letras, Has acertado ' + points + ' letras: ' + corrects + ' - tienes ' + points + ' puntos' );
-            /* var newPlayer = prompt('otro jugador? y/n');
-            switch(newPlayer) {
-                case 'y':
-                    newGame();
-                    break;
-                case 'n':
-                    console.log('Juego Terminado!!');
-                    break;
-    
-            
-            } */
-        }
 
         function endTimer() {
             count = 0;
