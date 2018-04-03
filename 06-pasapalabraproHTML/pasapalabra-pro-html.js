@@ -19,22 +19,31 @@ var highlight = function(el, colour) {
 
 var players = [];
 var playerName;
-    
+var divName; 
+var startText; 
+var resp;
+
+function inIt() {
+    divName.style.display = "block"; 
+    startText.style.display = "block";
+}
+
 
 
 function newGame() {      
             playerName = document.querySelector('#nome').value;
-            var elem = document.getElementById("divName");     // remove div
-            elem.parentElement.removeChild(elem);
-            var resp = document.getElementById("resp");
-            resp.style.display = "block";
+            divName = document.getElementById("divName");     
+            startText = document.getElementById("startText"); 
+            divName.style.display = "none"; 
+            startText.style.display = "none";   
             startGame();
 }
 
 function startGame() {
 
         
-        
+    resp = document.getElementById("resp");
+    resp.style.display = "block";   
     var questions = [
         [ { letter: "a", answer: "abducir", status: 0, question: ("CON LA A. Dicho de una supuesta criatura extraterrestre.") },
         { letter: "a", answer: "araña", status: 0, question: ("CON LA A. Arácnido de cuatro pares de patas que presenta un pequeño cefalotórax no articulado al que se une un abdomen abultado, en cuyo extremo tiene los órganos productores de seda o hileras.") },

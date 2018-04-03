@@ -12,63 +12,65 @@
 <body>
 
     <div class="container-fluid">
-            <div class="row">
-                <div class="col">
-                    <ul class='circle-container'>
+        <div class="row">
+            <div class="col">
+                <ul class='circle-container'>
 
-                        <li class="item">H</li>
-                        <li class="item">I</li>
-                        <li class="item">J</li>
-                        <li class="item">K</li>
-                        <li class="item">L</li>
-                        <li class="item">M</li>
-                        <li class="item">N</li>
-                        <li class="item">Ñ</li>
-                        <li class="item">O</li>
-                        <li class="item">P</li>
-                        <li class="item">Q</li>
-                        <li class="item">R</li>
-                        <li class="item">S</li>
-                        <li class="item">T</li>
-                        <li class="item">U</li>
-                        <li class="item">V</li>
-                        <li class="item">W</li>
-                        <li class="item">X</li>
-                        <li class="item">Y</li>
-                        <li class="item">Z</li>
-                        <li class="item">A</li>
-                        <li class="item">B</li>
-                        <li class="item">C</li>
-                        <li class="item">D</li>
-                        <li class="item">E</li>
-                        <li class="item">F</li>
-                        <li class="item">G</li>
-                                
-                    </ul>
-                    <div class="title-container">
-                        <p class="title">PASAPALABRA</p>
-                    </div>
+                    <li class="item">H</li>
+                    <li class="item">I</li>
+                    <li class="item">J</li>
+                    <li class="item">K</li>
+                    <li class="item">L</li>
+                    <li class="item">M</li>
+                    <li class="item">N</li>
+                    <li class="item">Ñ</li>
+                    <li class="item">O</li>
+                    <li class="item">P</li>
+                    <li class="item">Q</li>
+                    <li class="item">R</li>
+                    <li class="item">S</li>
+                    <li class="item">T</li>
+                    <li class="item">U</li>
+                    <li class="item">V</li>
+                    <li class="item">W</li>
+                    <li class="item">X</li>
+                    <li class="item">Y</li>
+                    <li class="item">Z</li>
+                    <li class="item">A</li>
+                    <li class="item">B</li>
+                    <li class="item">C</li>
+                    <li class="item">D</li>
+                    <li class="item">E</li>
+                    <li class="item">F</li>
+                    <li class="item">G</li>
+                            
+                </ul>
+                <div class="title-container">
+                    <p class="title">PASAPALABRA</p>
                 </div>
-                <div class="col" id='dx'>
+            </div>
+            <div class="col" id='dx'>
+                <div id='startText' style="display:block">
                     <h2>BIENVENIDOS AL JUEGO DE PASAPALABRA DE SKYLAB CODERS ACADEMY!</h2><br>
                     <p>Basado en el exitoso concurso de televisión Pasapalabra de Telecinco, las normas son muy sencillas:<br>
-                            
-                            Se mostraran unas definiciones por pantalla y el usuario deberá responder con la palabra a la que corresponden. <br>
-                            El usuario tiene la opción de decir Pasapalabra y dejar esa definición para mas adelante.<br>
-                            
-                            El programa es sensible a las acentuación, asi que se debe introducir la palabra sin tilde. 
+                        
+                        Se mostraran unas definiciones por pantalla y el usuario deberá responder con la palabra a la que corresponden. <br>
+                        El usuario tiene la opción de decir Pasapalabra y dejar esa definición para mas adelante.<br>
+                        
+                        El programa es sensible a las acentuación, asi que se debe introducir la palabra sin tilde. 
                     </p>
-                    <div class="form-group" id="divName" >
-                        <input class="form-control" id="nome" placeholder="Introduce tu nombre">
-                        <button class="btn btn-primary" id="resp" onclick="newGame()">JUGAMOS</button>
-                      </div>
-                    <div class="form-group" id="resp" style="display:none">
-                            <input class="form-control" id="queInput"  name="valueId" placeholder="Introduce tu respuesta"/>
-                            <button class="btn btn-primary" id="btnValue">Envia Respuesta</button>
-                    </div>
                 </div>
-                
+                <div class="form-group" id="divName" style="display:block">
+                    <input class="form-control" id="nome" placeholder="Introduce tu nombre">
+                    <button class="btn btn-primary" id="resp" onclick="newGame()">JUGAMOS</button>
+                </div>
+                <div class="form-group" id="resp" style="display:none">
+                    <input class="form-control" id="queInput"  name="valueId" placeholder="Introduce tu respuesta"/>
+                    <button class="btn btn-primary" id="btnValue">Envia Respuesta</button>
+                </div>
             </div>
+            
+        </div>
     </div>
             
     
