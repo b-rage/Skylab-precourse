@@ -19,9 +19,8 @@ var highlight = function(el, colour) {
 
 var players = [];
 var playerName;
-var divName; 
-var startText; 
-var resp;
+ 
+
 
 function inIt() {
     divName.style.display = "block"; 
@@ -29,21 +28,16 @@ function inIt() {
 }
 
 
-
-function newGame() {      
-            playerName = document.querySelector('#nome').value;
-            divName = document.getElementById("divName");     
-            startText = document.getElementById("startText"); 
-            divName.style.display = "none"; 
-            startText.style.display = "none";   
-            startGame();
-}
-
 function startGame() {
 
-        
-    resp = document.getElementById("resp");
-    resp.style.display = "block";   
+    var question = document.getElementById("question");
+    playerName = document.querySelector('#nome').value;
+    var divName = document.getElementById("divName");     
+    var startText = document.getElementById("startText"); 
+    divName.style.display = "none"; 
+    startText.style.display = "none"; 
+    question.style.display = "block"; 
+
     var questions = [
         [ { letter: "a", answer: "abducir", status: 0, question: ("CON LA A. Dicho de una supuesta criatura extraterrestre.") },
         { letter: "a", answer: "araña", status: 0, question: ("CON LA A. Arácnido de cuatro pares de patas que presenta un pequeño cefalotórax no articulado al que se une un abdomen abultado, en cuyo extremo tiene los órganos productores de seda o hileras.") },
@@ -159,9 +153,73 @@ function startGame() {
     var points = 0;
     var count = 27;
     var count2 = 0;
-    var answ;
+    var i=0;
+    
+
     function getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));
-      }
+    }
+
+    if(count>0) {
+
+        letterLoop();
+    }
+
+    function letterLoop() {
+
+        var r = getRandomInt(3);
+        var answ;
+
+        if(questions[i][r].status == 0 || questions[i][r].status == 3) {
+            var que = questions[i][r].question;
+            document.getElementById("que").innerHTML = que;
+        }
+        var button = document.getElementById("btnValue");
+        button.onclick = function() {
+                   
+            answ = document.querySelector('#answerId').value;
+            if(questions[i][r].status == 0 || questions[i][r].status == 3) {
+
+
+                if(answ == questions[i][r].answer) {
+
+                    points++;
+                    count--;
+                    questions[i][0].status = 1;
+                    questions[i][1].status = 1;
+                    questions[i][2].status = 1;
+                    corrects.push(questions[i][r].letter);                              
+                    alert('Correct, you have ' + points + ' Point!');
+
+                }else if (answ == 'pasapalabra') {
+
+                    questions[i][0].status = 3;
+                    questions[i][1].status = 3;
+                    questions[i][2].status = 3;
+                    console.log(questions[i][r].status);
+                    
+                    alert('Pasapalabra');
+                    
+                
+                }else if(answ !== 'pasapalabra' || answ !== questions[i][r].answer){
+
+                    questions[i][0].status = 2;
+                    questions[i][1].status = 2;
+                    questions[i][2].status = 2;
+                    incorrects++;
+                    count--;
+                    
+    
+                }
+            } 
+
+        }
+            
+    }
+    
+                
+           
     
 }
+    
+
