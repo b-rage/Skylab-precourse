@@ -160,54 +160,81 @@ function startGame() {
         return Math.floor(Math.random() * Math.floor(max));
     }
 
-    if(count>0) {
+    function initLoop() {
 
-        letterLoop();
+        if(count>0) {
+
+            letterLoop();
+        }
     }
+    initLoop()
 
     function letterLoop() {
 
         var r = getRandomInt(3);
         var answ;
-
+        if(i==27) {
+            i = 0;
+        }
+        var colorLetter = document.getElementById(i);
+        console.log(colorLetter);
+        console.log(i);
+        
+        
         if(questions[i][r].status == 0 || questions[i][r].status == 3) {
             var que = questions[i][r].question;
             document.getElementById("que").innerHTML = que;
+        }else if (count > 0) {
+            i++;
+            letterLoop();
         }
         var button = document.getElementById("btnValue");
         button.onclick = function() {
                    
-            answ = document.querySelector('#answerId').value;
+            var askFor = document.querySelector('#answerId').value;
+            answ = askFor.toLowerCase();
             if(questions[i][r].status == 0 || questions[i][r].status == 3) {
 
 
                 if(answ == questions[i][r].answer) {
 
-                    points++;
-                    count--;
                     questions[i][0].status = 1;
                     questions[i][1].status = 1;
                     questions[i][2].status = 1;
-                    corrects.push(questions[i][r].letter);                              
-                    alert('Correct, you have ' + points + ' Point!');
+                    corrects.push(questions[i][r].letter); 
+                    points++;
+                    count--;
+                    i++;
+                    colorLetter.style.backgroundColor = '#22c140'; 
+                    console.log('giusta');
+                    
+                    letterLoop();                           
+                    //alert('Correct, you have ' + points + ' Point!');
+                    
 
                 }else if (answ == 'pasapalabra') {
 
                     questions[i][0].status = 3;
                     questions[i][1].status = 3;
                     questions[i][2].status = 3;
-                    console.log(questions[i][r].status);
-                    
-                    alert('Pasapalabra');
+                    i++; 
+                    console.log('pass');
+                    letterLoop();  
+                    //alert('Pasapalabra');
+
                     
                 
                 }else if(answ !== 'pasapalabra' || answ !== questions[i][r].answer){
-
+                    colorLetter.style.backgroundColor = '#e05050';
+                    console.log('sbagliata');
+                    
                     questions[i][0].status = 2;
                     questions[i][1].status = 2;
                     questions[i][2].status = 2;
                     incorrects++;
                     count--;
+                    i++; 
+                    letterLoop();
                     
     
                 }
