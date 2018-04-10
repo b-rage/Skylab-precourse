@@ -34,8 +34,14 @@ p {
     opacity: 0.75;
     font-family: 'Raleway', sans-serif;
     font-size: 17px;
-    
 
+}
+
+#resultText {
+  color: white;
+  opacity: 0.75;
+  font-family: 'Raleway', sans-serif;
+  font-size: 25px;
 
 }
 
@@ -123,7 +129,7 @@ p {
 
 .title-container {
     position: absolute;
-    top: 27.5%;
+    top: 23.5%;
     left: 20.5%;
     
 }

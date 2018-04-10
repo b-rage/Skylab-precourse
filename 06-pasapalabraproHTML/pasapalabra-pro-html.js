@@ -16,29 +16,7 @@ var highlight = function(el, colour) {
 };
     
     highlight(idNum, '#f0f'); */
-
-var players = [];
-var playerName;
- 
-
-
-function inIt() {
-    divName.style.display = "block"; 
-    startText.style.display = "block";
-}
-
-
-function startGame() {
-
-    var question = document.getElementById("question");
-    playerName = document.querySelector('#nome').value;
-    var divName = document.getElementById("divName");     
-    var startText = document.getElementById("startText"); 
-    divName.style.display = "none"; 
-    startText.style.display = "none"; 
-    question.style.display = "block"; 
-
-    var questions = [
+var questions = [
         [ { letter: "a", answer: "abducir", status: 0, question: ("CON LA A. Dicho de una supuesta criatura extraterrestre.") },
         { letter: "a", answer: "araña", status: 0, question: ("CON LA A. Arácnido de cuatro pares de patas que presenta un pequeño cefalotórax no articulado al que se une un abdomen abultado, en cuyo extremo tiene los órganos productores de seda o hileras.") },
         { letter: "a", answer: "artado", status: 0, question: ("CON LA A. Dicho de un clérigo: Que tiene tiempo limitado para ordenarse.") }
@@ -148,6 +126,33 @@ function startGame() {
         { letter: "z", answer: "zote", status: 0, question: ("CON LA Z. Ignorante, torpe.") },
         ],
     ];
+var players = [];
+var playerName;
+ 
+
+
+function inIt() {
+    var letters = document.querySelectorAll(".item");
+    var j;
+    for (j = 0; j < letters.length; j++) {
+        letters[j].style.backgroundColor = "transparent";
+    }
+    divName.style.display = "block"; 
+    startText.style.display = "block";
+}
+
+
+function startGame() {
+
+    var question = document.getElementById("question");
+    playerName = document.querySelector('#nome').value;
+    var divName = document.getElementById("divName");     
+    var startText = document.getElementById("startText"); 
+    divName.style.display = "none"; 
+    startText.style.display = "none"; 
+    question.style.display = "block"; 
+
+    
     var corrects = [];
     var incorrects = 0;
     var points = 0;
@@ -176,10 +181,6 @@ function startGame() {
         if(i==27) {
             i = 0;
         }
-        var colorLetter = document.getElementById(i);
-        console.log(colorLetter);
-        console.log(i);
-        
         
         if(questions[i][r].status == 0 || questions[i][r].status == 3) {
             var que = questions[i][r].question;
@@ -187,10 +188,13 @@ function startGame() {
         }else if (count > 0) {
             i++;
             letterLoop();
+        }else{
+            resultT();
+            
         }
         var button = document.getElementById("btnValue");
         button.onclick = function() {
-                   
+            var colorLetter = document.getElementById(i);      
             var askFor = document.querySelector('#answerId').value;
             answ = askFor.toLowerCase();
             if(questions[i][r].status == 0 || questions[i][r].status == 3) {
@@ -198,16 +202,14 @@ function startGame() {
 
                 if(answ == questions[i][r].answer) {
 
+                    colorLetter.style.backgroundColor = '#22c140'; 
                     questions[i][0].status = 1;
                     questions[i][1].status = 1;
                     questions[i][2].status = 1;
                     corrects.push(questions[i][r].letter); 
                     points++;
                     count--;
-                    i++;
-                    colorLetter.style.backgroundColor = '#22c140'; 
-                    console.log('giusta');
-                    
+                    i++;                    
                     letterLoop();                           
                     //alert('Correct, you have ' + points + ' Point!');
                     
@@ -218,16 +220,14 @@ function startGame() {
                     questions[i][1].status = 3;
                     questions[i][2].status = 3;
                     i++; 
-                    console.log('pass');
                     letterLoop();  
                     //alert('Pasapalabra');
 
                     
                 
                 }else if(answ !== 'pasapalabra' || answ !== questions[i][r].answer){
-                    colorLetter.style.backgroundColor = '#e05050';
-                    console.log('sbagliata');
                     
+                    colorLetter.style.backgroundColor = '#e05050';
                     questions[i][0].status = 2;
                     questions[i][1].status = 2;
                     questions[i][2].status = 2;
@@ -242,11 +242,53 @@ function startGame() {
 
         }
             
+    } 
+    
+    function resultT() {
+
+        var results = document.getElementById("resultId");
+        question.style.display = "none"; 
+        results.style.display = "block";
+        players.push({name: playerName, points: points});
+        document.getElementById('resultText').innerHTML = 'Game Over!! ' + playerName.toUpperCase() + '\n' + ' has fallado ' + incorrects + ' letras, Has acertado ' + points + ' letras: ' + corrects + '\n' + ' - tienes ' + points + ' puntos';
+        var btnNewGame = document.getElementById("btnNewGame");
+        btnNewGame.onclick = function() {
+            results.style.display = "none";
+            inIt();
+        }
+
+        btnEndGame.onclick = function() {
+            results.style.display = "none";
+            ranking();
+        }
     }
     
-                
-           
-    
+}
+
+function ranking() {
+
+    var sort_by = function(field, reverse, primer){     //sort array object by
+
+        var key = primer ? 
+            function(x) {return primer(x[field])} : 
+            function(x) {return x[field]};
+     
+        reverse = !reverse ? 1 : -1;
+     
+        return function (a, b) {
+            return a = key(a), b = key(b), reverse * ((a < b) - (b < a));
+          } 
+     }
+
+    var rankPoints = players.sort(sort_by('points', true, parseInt));   // Sort by price high to low
+    var revRankPoints = rankPoints.reverse();
+    revRankPoints.forEach(function(obj){
+
+        console.log(obj.name + ' => ' + obj.points + ' puntos');
+    }) 
+        
+        
+   
 }
     
 
