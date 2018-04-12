@@ -45,6 +45,22 @@ p {
 
 }
 
+#clasText {
+  color: white;
+  opacity: 0.75;
+  font-family: 'Raleway', sans-serif;
+  font-size: 35px;
+
+}
+
+#ranking > li {
+  color: white;
+  opacity: 0.75;
+  font-family: 'Raleway', sans-serif;
+  font-size: 25px;
+  list-style: none;
+}
+
 
 
 .btn-primary {
@@ -54,7 +70,7 @@ p {
     border: 2px solid whitesmoke;
     border-radius: 3%;
     opacity: 0.75;
-    font-family: 'Chango', cursive;
+    font-family: 'Raleway', sans-serif;
 }
 
 .btn-primary:hover {
@@ -129,17 +145,17 @@ p {
 
 .title-container {
     position: absolute;
-    top: 23.5%;
-    left: 20.5%;
+    top: 23%;
+    left: 25%;
     
 }
 
 .title {
     color: whitesmoke;
-    font-size: 28px;
+    font-size: 34px;
     padding: 5px;
-    opacity: 0.75;
-    font-family: 'Chango', cursive;
+    opacity: 0.95;
+    font-family: 'Raleway', sans-serif;
     /* text-shadow: 6px 0 0 rgb(215, 231, 245); */
 
     
