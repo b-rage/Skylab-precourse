@@ -65,12 +65,14 @@
                     <input class="form" id="nome" placeholder="..."><br>
                     <button class="btn btn-primary" id="resp" onclick="startGame()">JUGAMOS</button>
                 </div>
-                <div class="form-group" id="question" >
+                <div class="form-group" id="question" style="display:none">
                     <div id="que"></div>
                     <input class="form" id="answerId"  name="valueId" placeholder="..."/><br>
                     <button class="btn btn-primary" id="btnValue">Envia Respuesta</button>
+                    <button class="btn btn-primary" id="btnPas">Pasapalabra</button>
+                    <button class="btn btn-primary" id="btnStop">Terminar</button>
                 </div>
-                <div class="form-group" id="resultId" style="display:none">
+                <div class="form-group" id="resultId" style="display:none" >
                     <div id="resultText"></div>
                     <button class="btn btn-primary" id="btnNewGame">Nuevo Juego</button>
                     <button class="btn btn-primary" id="btnEndGame">Terminar</button>
@@ -78,7 +80,7 @@
                 <div>
                     <p id="clasText" style="display:none">CLASIFICACIÓN</p>
                     <ul id="ranking">
-                            <li>test</li>
+                            <li></li>
                         </ul>
                 </div>
             </div>

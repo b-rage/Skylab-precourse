@@ -1,22 +1,4 @@
 
-/* 
-
-
----- change color li id=idNum -----
-
-var idNum = 2;
-var highlight = function(el, colour) { 
-    el = document.getElementById(el) || false;
-    
-    if(el.style) {
-        el.style.color = colour;
-    }
-    
-    return el;
-};
-    
-    highlight(idNum, '#f0f'); */
-
 var players = [];
 var playerName;
  
@@ -148,6 +130,8 @@ function startGame() {
     playerName = document.querySelector('#nome').value;
     var divName = document.getElementById("divName");     
     var startText = document.getElementById("startText"); 
+    var btnPas = document.getElementById("btnPas");
+    var btnStop = document.getElementById("btnStop");
     divName.style.display = "none"; 
     startText.style.display = "none"; 
     question.style.display = "block"; 
@@ -185,6 +169,16 @@ function startGame() {
 
         function loopPasa() {
 
+            btnPas.onclick = function() {
+
+                pasaArray[i].status = 3;
+                i++; 
+                loopPasa();
+            }
+            btnStop.onclick = function() {
+
+                resultT();
+            }
             if(i==27) {
                 i = 0;
             }
@@ -210,14 +204,6 @@ function startGame() {
                         //alert('Correct, you have ' + points + ' Point!');
                         
     
-                    }else if (answ == 'pasapalabra') {
-                        
-                        pasaArray[i].status = 3;
-                        i++; 
-                        loopPasa(); 
-                        
-                        
-                    
                     }else if(answ !== 'pasapalabra' || answ !== pasaArray[i].answer){
                         
                         colorLetterPasa.style.backgroundColor = '#e05050'; 
@@ -251,6 +237,22 @@ function startGame() {
             resultT();
             
         }
+        
+        btnPas.onclick = function() {
+
+            questions[i][0].status = 3;
+            questions[i][1].status = 3;
+            questions[i][2].status = 3;
+            pasaArray.push(questions[i][r]);
+            i++; 
+            letterLoop();
+        }
+
+        btnStop.onclick = function() {
+
+            resultT();
+        }
+
         var button = document.getElementById("btnValue");
         button.onclick = function() {
             var colorLetter = document.getElementById(i);      
@@ -273,20 +275,6 @@ function startGame() {
                     //alert('Correct, you have ' + points + ' Point!');
                     
 
-                }else if (answ == 'pasapalabra') {
-                    
-                    questions[i][0].status = 3;
-                    questions[i][1].status = 3;
-                    questions[i][2].status = 3;
-                    pasaArray.push(questions[i][r]);
-                    console.log(pasaArray);
-                    
-                    i++; 
-                    letterLoop();
-                            
-                    
-                    
-                
                 }else if(answ !== 'pasapalabra' || answ !== questions[i][r].answer){
                     
                     colorLetter.style.backgroundColor = '#e05050';
