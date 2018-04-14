@@ -1,17 +1,20 @@
 
 var players = [];
 var playerName;
+var timerText;
  
 
 
 function inIt() {
     var letters = document.querySelectorAll(".item");
+    timerText = document.getElementById("countdowntimer");
     var j;
     for (j = 0; j < letters.length; j++) {
         letters[j].style.backgroundColor = "transparent";
     }
     divName.style.display = "block"; 
     startText.style.display = "block";
+    timerText.style.display = "none";
 }
 
 
@@ -132,9 +135,11 @@ function startGame() {
     var startText = document.getElementById("startText"); 
     var btnPas = document.getElementById("btnPas");
     var btnStop = document.getElementById("btnStop");
+    timerText = document.getElementById("countdowntimer");
     divName.style.display = "none"; 
     startText.style.display = "none"; 
     question.style.display = "block"; 
+    timerText.style.display = "block";
 
     
     var corrects = [];
@@ -146,7 +151,16 @@ function startGame() {
     var pasaArray = [];
 
 
-    
+    var timer = setTimeout(function(){ resultT(); }, 130000);
+
+    var timeleft = 130;
+    var downloadTimer = setInterval(function(){
+    timeleft--;
+    timerText = document.getElementById("countdowntimer").textContent = timeleft;
+    if(timeleft <= 0)
+        clearInterval(downloadTimer);
+        
+    },1000);
 
     function initLoop() {
 
@@ -177,7 +191,11 @@ function startGame() {
             }
             btnStop.onclick = function() {
 
+                clearTimeout(timer);
+                clearInterval(downloadTimer);
+                document.getElementById("countdowntimer").innerHTML = '130';
                 resultT();
+                
             }
             if(i==27) {
                 i = 0;
@@ -222,6 +240,10 @@ function startGame() {
                 i++;
                 loopPasa();
             }else{
+                
+                clearTimeout(timer);
+                clearInterval(downloadTimer);
+                document.getElementById("countdowntimer").innerHTML = '130';
                 resultT();
                 
             }
@@ -234,6 +256,10 @@ function startGame() {
             i++;
             letterLoop();
         }else{
+
+            clearTimeout(timer);
+            clearInterval(downloadTimer);
+            document.getElementById("countdowntimer").innerHTML = '130';
             resultT();
             
         }
@@ -250,6 +276,9 @@ function startGame() {
 
         btnStop.onclick = function() {
 
+            clearTimeout(timer);
+            clearInterval(downloadTimer);
+            document.getElementById("countdowntimer").innerHTML = '130';
             resultT();
         }
 
@@ -300,8 +329,10 @@ function startGame() {
     function resultT() {
 
         var results = document.getElementById("resultId");
+        timerText = document.getElementById("countdowntimer");
         question.style.display = "none"; 
         results.style.display = "block";
+        timerText.style.display = "none";
         players.push({name: playerName, points: points});
         document.getElementById('resultText').innerHTML = 'Game Over!! ' + playerName.toUpperCase() + '\n' + ' has fallado ' + incorrects + ' letras, Has acertado ' + points + ' letras: ' + corrects + '\n' + ' - tienes ' + points + ' puntos';
         var btnNewGame = document.getElementById("btnNewGame");
@@ -323,7 +354,15 @@ function ranking() {
 
     var listPlay = document.getElementById('ranking');
     var clasText = document.getElementById("clasText");
-    clasText.style.display = "block"; 
+    var rankingFinal = document.getElementById("rankingFinal");
+    var btnNewGame2 = document.getElementById("btnNewGame2");
+    rankingFinal.style.display = "block";
+     
+
+    btnNewGame2.onclick = function() {
+        rankingFinal.style.display = "none";
+        inIt();
+    }
 
     var sort_by = function(field, reverse, primer){     //sort array object by
 

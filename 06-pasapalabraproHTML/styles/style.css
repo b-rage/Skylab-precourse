@@ -130,7 +130,7 @@ p {
     width: 10px;
     height: 10px;
     border: 2px solid white;
-    border-radius: 50%;
+    border-radius: 70%;
     background-color: transparent;
     /* background-color: #FF0033; 
     background-color: #00CC66;*/ 
@@ -147,6 +147,7 @@ p {
     position: absolute;
     top: 23%;
     left: 25%;
+    text-align: center;
     
 }
 
@@ -156,9 +157,17 @@ p {
     padding: 5px;
     opacity: 0.95;
     font-family: 'Raleway', sans-serif;
-    /* text-shadow: 6px 0 0 rgb(215, 231, 245); */
+    /* text-shadow: 6px 0 0 rgb(215, 231, 245); */    
+}
 
-    
+#countdowntimer {
+  color: whitesmoke;
+    font-size: 34px;
+    opacity: 0.95;
+    font-family: 'Times New Roman', Times, serif;
+    border: 2px solid white;
+    border-radius: 10%;
+    background-color: transparent;
 }
 
 .circle-container {
