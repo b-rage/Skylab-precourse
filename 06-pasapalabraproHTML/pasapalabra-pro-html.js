@@ -2,6 +2,7 @@
 var players = [];
 var playerName;
 var timerText;
+var circleContainer;
  
 
 
@@ -135,11 +136,23 @@ function startGame() {
     var startText = document.getElementById("startText"); 
     var btnPas = document.getElementById("btnPas");
     var btnStop = document.getElementById("btnStop");
+    var button = document.getElementById("btnValue");
     timerText = document.getElementById("countdowntimer");
+    circleContainer = document.getElementById("circleContainer");
+    var button2 = document.getElementById("btnValue2");
+    var btnPas2 = document.getElementById("btnPas2");
+    var btnStop2 = document.getElementById("btnStop2");
     divName.style.display = "none"; 
     startText.style.display = "none"; 
+    circleContainer.style.display = "block"; 
     question.style.display = "block"; 
     timerText.style.display = "block";
+    button.style.display = "inline-block"; 
+    btnPas.style.display = "inline-block";
+    btnStop.style.display = "inline-block";
+    button2.style.display = "none"; 
+    btnPas2.style.display = "none";
+    btnStop2.style.display = "none";
 
     
     var corrects = [];
@@ -164,9 +177,11 @@ function startGame() {
 
     function initLoop() {
 
-        if(count>0) {
+        if(count>0 && i < 27) {
 
             letterLoop();
+        }else if (count>0 && i == 27){
+            loopPasa();
         }
     }
     initLoop()
@@ -176,101 +191,34 @@ function startGame() {
         var r = Math.floor(Math.random() * Math.floor(3));
         var answ;
         if(i==27 && pasaArray.length>0) {
-            i = 0;
             loopPasa();
-        }
-        
-
-        function loopPasa() {
-
-            btnPas.onclick = function() {
-
-                pasaArray[i].status = 3;
-                i++; 
-                loopPasa();
-            }
-            btnStop.onclick = function() {
-
-                clearTimeout(timer);
-                clearInterval(downloadTimer);
-                document.getElementById("countdowntimer").innerHTML = '130';
-                resultT();
-                
-            }
-            if(i==27) {
-                i = 0;
-            }
-            var quePas;
-            var buttonPas = document.getElementById("btnValue");
-            if(pasaArray[i].status == 3) {
-                quePas = pasaArray[i].question;
-                document.getElementById("que").innerHTML = quePas;
-                buttonPas.onclick = function() {
-                    var colorLetterPasa = document.getElementById(pasaArray[i].id);      
-                    var askFor = document.querySelector('#answerId').value;
-                    answ = askFor.toLowerCase();
-                    
-                    if(answ == pasaArray[i].answer) {
-    
-                        colorLetterPasa.style.backgroundColor = '#22c140'; 
-                        pasaArray[i].status = 1;
-                        corrects.push(pasaArray[i].letter); 
-                        points++;
-                        count--;
-                        i++;                  
-                        loopPasa();                           
-                        //alert('Correct, you have ' + points + ' Point!');
-                        
-    
-                    }else if(answ !== 'pasapalabra' || answ !== pasaArray[i].answer){
-                        
-                        colorLetterPasa.style.backgroundColor = '#e05050'; 
-                        pasaArray[i].status = 2;
-                        incorrects++;
-                        count--;
-                        i++; 
-                        loopPasa(); 
-                        
-        
-                    }
-                    
-        
-                }
-            }else if (count > 0) {
-                i++;
-                loopPasa();
-            }else{
-                
-                clearTimeout(timer);
-                clearInterval(downloadTimer);
-                document.getElementById("countdowntimer").innerHTML = '130';
-                resultT();
-                
-            }
-        }
-        
-        if(count > 0 && (questions[i][r].status == 0 || questions[i][r].status == 3)) {
+        }else if(count > 0 && questions[i][r].status == 0) {
             var que = questions[i][r].question;
             document.getElementById("que").innerHTML = que;
         }else if (count > 0) {
             i++;
+            document.getElementById("answerId").value = '';
             letterLoop();
         }else{
 
             clearTimeout(timer);
             clearInterval(downloadTimer);
             document.getElementById("countdowntimer").innerHTML = '130';
+            document.getElementById("answerId").value = '';
             resultT();
             
         }
         
-        btnPas.onclick = function() {
+        
 
+        btnPas.onclick = function() {
+            
             questions[i][0].status = 3;
             questions[i][1].status = 3;
             questions[i][2].status = 3;
             pasaArray.push(questions[i][r]);
             i++; 
+            document.getElementById("answerId").value = '';
             letterLoop();
         }
 
@@ -279,15 +227,16 @@ function startGame() {
             clearTimeout(timer);
             clearInterval(downloadTimer);
             document.getElementById("countdowntimer").innerHTML = '130';
+            document.getElementById("answerId").value = '';
             resultT();
         }
 
-        var button = document.getElementById("btnValue");
+        
         button.onclick = function() {
             var colorLetter = document.getElementById(i);      
             var askFor = document.querySelector('#answerId').value;
             answ = askFor.toLowerCase();
-            if(questions[i][r].status == 0 || questions[i][r].status == 3) {
+            if(questions[i][r].status == 0) {
 
                 
                 if(answ == questions[i][r].answer) {
@@ -299,22 +248,22 @@ function startGame() {
                     corrects.push(questions[i][r].letter); 
                     points++;
                     count--;
-                    i++;                  
+                    i++; 
+                    document.getElementById("answerId").value = '';                
                     letterLoop();                           
                     //alert('Correct, you have ' + points + ' Point!');
                     
 
-                }else if(answ !== 'pasapalabra' || answ !== questions[i][r].answer){
+                }else{
                     
-                    colorLetter.style.backgroundColor = '#e05050';
-                    
-                    
+                    colorLetter.style.backgroundColor = '#e05050';            
                     questions[i][0].status = 2;
                     questions[i][1].status = 2;
                     questions[i][2].status = 2;
                     incorrects++;
                     count--;
                     i++; 
+                    document.getElementById("answerId").value = '';
                     letterLoop();
                     
     
@@ -325,25 +274,128 @@ function startGame() {
         }
             
     } 
+
+    function loopPasa() { 
+        
+        var quePas;
+        button.style.display = "none"; 
+        btnPas.style.display = "none";
+        btnStop.style.display = "none";
+        button2.style.display = "inline-block"; 
+        btnPas2.style.display = "inline-block";
+        btnStop2.style.display = "inline-block";
+
+        if(i==27) {
+            i = 0;
+            loop();
+        }
+        
+        function loop() {
+
+            
+
+            if(count > 0 && pasaArray[0].status == 3) {
+            
+                quePas = pasaArray[0].question;
+                document.getElementById("que").innerHTML = quePas;               
+                
+            }else if (count > 0) {
+                i++;
+                loop();
+                document.getElementById("answerId").value = '';
+            }else{
+                
+                clearTimeout(timer);
+                clearInterval(downloadTimer);
+                document.getElementById("countdowntimer").innerHTML = '130';
+                document.getElementById("answerId").value = '';
+                resultT();
+                
+            } 
+
+            btnPas2.onclick = function() {
+    
+                i++; 
+                document.getElementById("answerId").value = '';
+                loop();
+            }
+
+
+            btnStop2.onclick = function() {
+
+                clearTimeout(timer);
+                clearInterval(downloadTimer);
+                document.getElementById("countdowntimer").innerHTML = '130';
+                document.getElementById("answerId").value = '';
+                resultT();
+                
+            }
+
+
+            button2.onclick = function() {
+                
+                var colorLetterPasa = document.getElementById(pasaArray[0].id);      
+                var askFor = document.querySelector('#answerId').value;
+                answ = askFor.toLowerCase();
+                
+                if(answ == pasaArray[0].answer) {
+
+                    colorLetterPasa.style.backgroundColor = '#22c140'; 
+                    pasaArray[0].status = 1;
+                    corrects.push(pasaArray[i].letter); 
+                    pasaArray.splice(0,1);
+                    points++;
+                    count--;
+                    i++; 
+                    document.getElementById("answerId").value = '';                
+                    loop();                           
+                    //alert('Correct, you have ' + points + ' Point!');
+                    
+
+                }else{
+                    
+                    colorLetterPasa.style.backgroundColor = '#e05050'; 
+                    pasaArray[0].status = 2;
+                    pasaArray.splice(0,1);
+                    incorrects++;
+                    count--;
+                    i++; 
+                    document.getElementById("answerId").value = '';
+                    loop(); 
+                    
+    
+                }
+                
+    
+            }
+        }
+        
+        
+
+        
+    }
     
     function resultT() {
-
+        circleContainer.style.display = "none"; 
         var results = document.getElementById("resultId");
         timerText = document.getElementById("countdowntimer");
         question.style.display = "none"; 
         results.style.display = "block";
         timerText.style.display = "none";
         players.push({name: playerName, points: points});
-        document.getElementById('resultText').innerHTML = 'Game Over!! ' + playerName.toUpperCase() + '\n' + ' has fallado ' + incorrects + ' letras, Has acertado ' + points + ' letras: ' + corrects + '\n' + ' - tienes ' + points + ' puntos';
+        document.getElementById('resultText').innerHTML = 'Game Over!! ' + playerName.toUpperCase() + '<br>' + 'Has fallado ' + incorrects + ' letras<br> Has acertado ' + points + ' letras ' + corrects + '<br>' + 'Tienes ' + points + ' puntos';
         var btnNewGame = document.getElementById("btnNewGame");
 
         btnNewGame.onclick = function() {
             results.style.display = "none";
+            document.getElementById("answerId").value = '';
+            document.getElementById("nome").value = '';
             inIt();
         }
 
         btnEndGame.onclick = function() {
             results.style.display = "none";
+            document.getElementById("answerId").value = '';
             ranking();
         }
     }
@@ -351,7 +403,8 @@ function startGame() {
 }
 
 function ranking() {
-
+    circleContainer = document.getElementById("circleContainer");
+    circleContainer.style.display = "none"; 
     var listPlay = document.getElementById('ranking');
     var clasText = document.getElementById("clasText");
     var rankingFinal = document.getElementById("rankingFinal");
@@ -361,6 +414,7 @@ function ranking() {
 
     btnNewGame2.onclick = function() {
         rankingFinal.style.display = "none";
+        document.getElementById("answerId").value = '';
         inIt();
     }
 
