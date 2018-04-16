@@ -16,6 +16,7 @@ function inIt() {
     divName.style.display = "block"; 
     startText.style.display = "block";
     timerText.style.display = "none";
+    document.getElementById("nome").value = '';
 }
 
 

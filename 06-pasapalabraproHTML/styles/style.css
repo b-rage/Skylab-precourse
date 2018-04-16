@@ -31,14 +31,14 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* .timer-container {
-    position: absolute;
-    top: 40%;
-    left: 16%;
+ .timer-container {
+    position: fixed;
+    top: 45%;
+    left: 27%;
     z-index: 3;
     width: 50px; 
     
-} */
+} 
 
 .title {
     color: whitesmoke;
@@ -68,6 +68,7 @@ body {
     box-sizing: content-box;
     margin-top: 22em;
     margin-left: 12%;
+    z-index: 1;
 
   }
   .circle-container > * {
@@ -255,8 +256,8 @@ p {
 }
 
 #question {
-    margin-top: -220px;
-    margin-left: 550px;
+    margin-top: -258px;
+    margin-left: 755px;
   }
 
 #que {
