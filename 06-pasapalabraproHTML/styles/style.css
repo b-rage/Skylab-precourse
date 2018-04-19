@@ -17,6 +17,119 @@ body {
 }
 
 
+.circle-container {
+  position: relative;
+  /* 1 */
+  width: 15em;
+  height: 15em;
+  padding: 0;
+  border-radius: 50%;
+  list-style: none;
+  /* 2 */
+  box-sizing: content-box;
+  /* 3 */
+  margin: 5em auto 0;
+  border: solid 0px tomato;
+}
+.circle-container > * {
+  /* 4 */
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 28px;
+  height: 28px;
+  margin: -0.5em;
+}
+
+#circleContainer {
+  text-align: center;
+}
+
+.circle-container > :nth-of-type(1) {
+  transform: rotate(0deg) translate(7.5em) rotate(0deg);
+}
+.circle-container > :nth-of-type(2) {
+  transform: rotate(13.3333333333deg) translate(7.5em) rotate(-13.3333333333deg);
+}
+.circle-container > :nth-of-type(3) {
+  transform: rotate(26.6666666667deg) translate(7.5em) rotate(-26.6666666667deg);
+}
+.circle-container > :nth-of-type(4) {
+  transform: rotate(40deg) translate(7.5em) rotate(-40deg);
+}
+.circle-container > :nth-of-type(5) {
+  transform: rotate(53.3333333333deg) translate(7.5em) rotate(-53.3333333333deg);
+}
+.circle-container > :nth-of-type(6) {
+  transform: rotate(66.6666666667deg) translate(7.5em) rotate(-66.6666666667deg);
+}
+.circle-container > :nth-of-type(7) {
+  transform: rotate(80deg) translate(7.5em) rotate(-80deg);
+}
+.circle-container > :nth-of-type(8) {
+  transform: rotate(93.3333333333deg) translate(7.5em) rotate(-93.3333333333deg);
+}
+.circle-container > :nth-of-type(9) {
+  transform: rotate(106.6666666667deg) translate(7.5em) rotate(-106.6666666667deg);
+}
+.circle-container > :nth-of-type(10) {
+  transform: rotate(120deg) translate(7.5em) rotate(-120deg);
+}
+.circle-container > :nth-of-type(11) {
+  transform: rotate(133.3333333333deg) translate(7.5em) rotate(-133.3333333333deg);
+}
+.circle-container > :nth-of-type(12) {
+  transform: rotate(146.6666666667deg) translate(7.5em) rotate(-146.6666666667deg);
+}
+.circle-container > :nth-of-type(13) {
+  transform: rotate(160deg) translate(7.5em) rotate(-160deg);
+}
+.circle-container > :nth-of-type(14) {
+  transform: rotate(173.3333333333deg) translate(7.5em) rotate(-173.3333333333deg);
+}
+.circle-container > :nth-of-type(15) {
+  transform: rotate(186.6666666667deg) translate(7.5em) rotate(-186.6666666667deg);
+}
+.circle-container > :nth-of-type(16) {
+  transform: rotate(200deg) translate(7.5em) rotate(-200deg);
+}
+.circle-container > :nth-of-type(17) {
+  transform: rotate(213.3333333333deg) translate(7.5em) rotate(-213.3333333333deg);
+}
+.circle-container > :nth-of-type(18) {
+  transform: rotate(226.6666666667deg) translate(7.5em) rotate(-226.6666666667deg);
+}
+.circle-container > :nth-of-type(19) {
+  transform: rotate(240deg) translate(7.5em) rotate(-240deg);
+}
+.circle-container > :nth-of-type(20) {
+  transform: rotate(253.3333333333deg) translate(7.5em) rotate(-253.3333333333deg);
+}
+.circle-container > :nth-of-type(21) {
+  transform: rotate(266.6666666667deg) translate(7.5em) rotate(-266.6666666667deg);
+}
+.circle-container > :nth-of-type(22) {
+  transform: rotate(280deg) translate(7.5em) rotate(-280deg);
+}
+.circle-container > :nth-of-type(23) {
+  transform: rotate(293.3333333333deg) translate(7.5em) rotate(-293.3333333333deg);
+}
+.circle-container > :nth-of-type(24) {
+  transform: rotate(306.6666666667deg) translate(7.5em) rotate(-306.6666666667deg);
+}
+.circle-container > :nth-of-type(25) {
+  transform: rotate(320deg) translate(7.5em) rotate(-320deg);
+}
+.circle-container > :nth-of-type(26) {
+  transform: rotate(333.3333333333deg) translate(7.5em) rotate(-333.3333333333deg);
+}
+.circle-container > :nth-of-type(27) {
+  transform: rotate(346.6666666667deg) translate(7.5em) rotate(-346.6666666667deg);
+}
+
+
+
 .item {
     display: block;
     border: 2px solid white;
@@ -24,7 +137,8 @@ body {
     background-color: transparent;
     color: whitesmoke;
     opacity: 0.75;
-    line-height: 35px;
+    line-height: 24px;
+    font-size: 18px;
     text-align: center;
     text-decoration: none;
     cursor: default;
@@ -32,13 +146,12 @@ body {
 }
 
  .timer-container {
-    position: fixed;
-    top: 45%;
-    left: 27%;
-    z-index: 3;
-    width: 50px; 
     
-} 
+  text-align: center;
+  margin-top: -165px;
+  margin-bottom: 151px;
+    
+ } 
 
 .title {
     color: whitesmoke;
@@ -53,7 +166,7 @@ body {
 
 #countdowntimer {
     color: whitesmoke;
-    font-size: 50px;
+    font-size: 40px;
     opacity: 0.75;
     font-family: 'Michroma', sans-serif;
 
@@ -61,115 +174,6 @@ body {
 
 
 
-.circle-container {
-    position: relative;
-    border-radius: 50%;
-    list-style: none;
-    box-sizing: content-box;
-    margin-top: 22em;
-    margin-left: 12%;
-    z-index: 1;
-
-  }
-  .circle-container > * {
-    
-    display: block;
-    position: absolute;
-    top: 20%;
-    left: 25%;
-    width: 2.5em;
-    height: 2.5em;
-    margin: -4.5em;
-  }
-  .circle-container > :nth-of-type(1) {
-    transform: rotate(0deg) translate(12em) rotate(0deg);
-  }
-  .circle-container > :nth-of-type(2) {
-    transform: rotate(13.3333333333deg) translate(12em) rotate(-13.3333333333deg);
-  }
-  .circle-container > :nth-of-type(3) {
-    transform: rotate(26.6666666667deg) translate(12em) rotate(-26.6666666667deg);
-  }
-  .circle-container > :nth-of-type(4) {
-    transform: rotate(40deg) translate(12em) rotate(-40deg);
-  }
-  .circle-container > :nth-of-type(5) {
-    transform: rotate(53.3333333333deg) translate(12em) rotate(-53.3333333333deg);
-  }
-  .circle-container > :nth-of-type(6) {
-    transform: rotate(66.6666666667deg) translate(12em) rotate(-66.6666666667deg);
-  }
-  .circle-container > :nth-of-type(7) {
-    transform: rotate(80deg) translate(12em) rotate(-80deg);
-  }
-  .circle-container > :nth-of-type(8) {
-    transform: rotate(93.3333333333deg) translate(12em) rotate(-93.3333333333deg);
-  }
-  .circle-container > :nth-of-type(9) {
-    transform: rotate(106.6666666667deg) translate(12em) rotate(-106.6666666667deg);
-  }
-  .circle-container > :nth-of-type(10) {
-    transform: rotate(120deg) translate(12em) rotate(-120deg);
-  }
-  .circle-container > :nth-of-type(11) {
-    transform: rotate(133.3333333333deg) translate(12em) rotate(-133.3333333333deg);
-  }
-  .circle-container > :nth-of-type(12) {
-    transform: rotate(146.6666666667deg) translate(12em) rotate(-146.6666666667deg);
-  }
-  .circle-container > :nth-of-type(13) {
-    transform: rotate(160deg) translate(12em) rotate(-160deg);
-  }
-  .circle-container > :nth-of-type(14) {
-    transform: rotate(173.3333333333deg) translate(12em) rotate(-173.3333333333deg);
-  }
-  .circle-container > :nth-of-type(15) {
-    transform: rotate(186.6666666667deg) translate(12em) rotate(-186.6666666667deg);
-  }
-  .circle-container > :nth-of-type(16) {
-    transform: rotate(200deg) translate(12em) rotate(-200deg);
-  }
-  .circle-container > :nth-of-type(17) {
-    transform: rotate(213.3333333333deg) translate(12em) rotate(-213.3333333333deg);
-  }
-  .circle-container > :nth-of-type(18) {
-    transform: rotate(226.6666666667deg) translate(12em) rotate(-226.6666666667deg);
-  }
-  .circle-container > :nth-of-type(19) {
-    transform: rotate(240deg) translate(12em) rotate(-240deg);
-  }
-  .circle-container > :nth-of-type(20) {
-    transform: rotate(253.3333333333deg) translate(12em) rotate(-253.3333333333deg);
-  }
-  .circle-container > :nth-of-type(21) {
-    transform: rotate(266.6666666667deg) translate(12em) rotate(-266.6666666667deg);
-  }
-  .circle-container > :nth-of-type(22) {
-    transform: rotate(280deg) translate(12em) rotate(-280deg);
-  }
-  .circle-container > :nth-of-type(23) {
-    transform: rotate(293.3333333333deg) translate(12em) rotate(-293.3333333333deg);
-  }
-  .circle-container > :nth-of-type(24) {
-    transform: rotate(306.6666666667deg) translate(12em) rotate(-306.6666666667deg);
-  }
-  .circle-container > :nth-of-type(25) {
-    transform: rotate(320deg) translate(12em) rotate(-320deg);
-  }
-  .circle-container > :nth-of-type(26) {
-    transform: rotate(333.3333333333deg) translate(12em) rotate(-333.3333333333deg);
-  }
-  .circle-container > :nth-of-type(27) {
-    transform: rotate(346.6666666667deg) translate(12em) rotate(-346.6666666667deg);
-  }
-  
-
-
-  #dx {
-    display: block;
-    margin: auto;
-  
-  }
 
 
 h2 {
@@ -194,9 +198,15 @@ p {
   text-align: center;
 }
 
+#dx {
+  padding-left: 10px;
+  text-align: center;
+  margin-top: 15px;
+}
+
 #resultId {
     text-align: center;
-    margin-top: 150px;
+    margin-top: 280px;
 }
 
 #resultText {
@@ -233,6 +243,7 @@ p {
 #rankingFinal{
 
    text-align: center;
+   margin-top: 280px;
 }
 
 .btn-primary {
@@ -255,18 +266,14 @@ p {
     opacity: 0.75;
 }
 
-#question {
-    margin-top: -258px;
-    margin-left: 755px;
-  }
+
 
 #que {
     color: white;
     opacity: 0.75;
     font-family: 'Raleway', sans-serif;
-    font-size: 25px;
-    margin-top: 100px;
-    width: 450px;
+    font-size: 21px;
+    
 }
 
 
@@ -296,108 +303,32 @@ p {
 }
 
 
-  /* @media screen and (max-width: 700px) {
+ @media screen and (max-width: 700px) {
 
     body, html {
       padding-right: 0px;
     }
-    .circle-container {
 
-      margin: 11em;
-    }
+  
 
-    #dx {
-      padding-left: 3%;
-      margin-top: -200px;
-    
-    }
+    .title {
 
-    .title-container {
-      position: absolute;
-      top:24%;
-      text-align: center;
-      
+      font-size: 28px;
+      letter-spacing: 2px;
+
   }
 
-    .circle-container > :nth-of-type(1) {
-      transform: rotate(0deg) translate(11em) rotate(0deg);
-    }
-    .circle-container > :nth-of-type(2) {
-      transform: rotate(13.3333333333deg) translate(11em) rotate(-13.3333333333deg);
-    }
-    .circle-container > :nth-of-type(3) {
-      transform: rotate(26.6666666667deg) translate(11em) rotate(-26.6666666667deg);
-    }
-    .circle-container > :nth-of-type(4) {
-      transform: rotate(40deg) translate(11em) rotate(-40deg);
-    }
-    .circle-container > :nth-of-type(5) {
-      transform: rotate(53.3333333333deg) translate(11em) rotate(-53.3333333333deg);
-    }
-    .circle-container > :nth-of-type(6) {
-      transform: rotate(66.6666666667deg) translate(11em) rotate(-66.6666666667deg);
-    }
-    .circle-container > :nth-of-type(7) {
-      transform: rotate(80deg) translate(11em) rotate(-80deg);
-    }
-    .circle-container > :nth-of-type(8) {
-      transform: rotate(93.3333333333deg) translate(11em) rotate(-93.3333333333deg);
-    }
-    .circle-container > :nth-of-type(9) {
-      transform: rotate(106.6666666667deg) translate(11em) rotate(-106.6666666667deg);
-    }
-    .circle-container > :nth-of-type(10) {
-      transform: rotate(120deg) translate(11em) rotate(-120deg);
-    }
-    .circle-container > :nth-of-type(11) {
-      transform: rotate(133.3333333333deg) translate(11em) rotate(-133.3333333333deg);
-    }
-    .circle-container > :nth-of-type(12) {
-      transform: rotate(146.6666666667deg) translate(11em) rotate(-146.6666666667deg);
-    }
-    .circle-container > :nth-of-type(13) {
-      transform: rotate(160deg) translate(11em) rotate(-160deg);
-    }
-    .circle-container > :nth-of-type(14) {
-      transform: rotate(173.3333333333deg) translate(11em) rotate(-173.3333333333deg);
-    }
-    .circle-container > :nth-of-type(15) {
-      transform: rotate(186.6666666667deg) translate(11em) rotate(-186.6666666667deg);
-    }
-    .circle-container > :nth-of-type(16) {
-      transform: rotate(200deg) translate(11em) rotate(-200deg);
-    }
-    .circle-container > :nth-of-type(17) {
-      transform: rotate(213.3333333333deg) translate(11em) rotate(-213.3333333333deg);
-    }
-    .circle-container > :nth-of-type(18) {
-      transform: rotate(226.6666666667deg) translate(11em) rotate(-226.6666666667deg);
-    }
-    .circle-container > :nth-of-type(19) {
-      transform: rotate(240deg) translate(11em) rotate(-240deg);
-    }
-    .circle-container > :nth-of-type(20) {
-      transform: rotate(253.3333333333deg) translate(11em) rotate(-253.3333333333deg);
-    }
-    .circle-container > :nth-of-type(21) {
-      transform: rotate(266.6666666667deg) translate(11em) rotate(-266.6666666667deg);
-    }
-    .circle-container > :nth-of-type(22) {
-      transform: rotate(280deg) translate(11em) rotate(-280deg);
-    }
-    .circle-container > :nth-of-type(23) {
-      transform: rotate(293.3333333333deg) translate(11em) rotate(-293.3333333333deg);
-    }
-    .circle-container > :nth-of-type(24) {
-      transform: rotate(306.6666666667deg) translate(11em) rotate(-306.6666666667deg);
-    }
-    .circle-container > :nth-of-type(25) {
-      transform: rotate(320deg) translate(11em) rotate(-320deg);
-    }
-    .circle-container > :nth-of-type(26) {
-      transform: rotate(333.3333333333deg) translate(11em) rotate(-333.3333333333deg);
-    }
-    .circle-container > :nth-of-type(27) {
-      transform: rotate(346.6666666667deg) translate(11em) rotate(-346.6666666667deg);
-    }
-  } */
+  h2 {
+    font-size: 25px;
+  }
+
+
+
+
+
+  .form {
+    width: 320px;
+  }
+
+   
+  } 
