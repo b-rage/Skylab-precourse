@@ -293,6 +293,9 @@ function startGame() {
         
         function loop() {
 
+            console.log('loop');
+            console.log(i);
+            
             
 
             if(count > 0 && pasaArray[0].status == 3) {
@@ -315,9 +318,13 @@ function startGame() {
             } 
 
             btnPas2.onclick = function() {
-    
+                console.log('pasa2');
+                console.log(pasaArray);
+                
+                pasaArray.push(pasaArray[0]);
                 i++; 
                 document.getElementById("answerId").value = '';
+                pasaArray.splice(0,1);
                 loop();
             }
 
@@ -343,11 +350,11 @@ function startGame() {
 
                     colorLetterPasa.style.backgroundColor = '#22c140'; 
                     pasaArray[0].status = 1;
-                    corrects.push(pasaArray[i].letter); 
+                    corrects.push(pasaArray[0].letter); 
                     pasaArray.splice(0,1);
                     points++;
                     count--;
-                    i++; 
+                    i++;
                     document.getElementById("answerId").value = '';                
                     loop();                           
                     //alert('Correct, you have ' + points + ' Point!');
@@ -360,7 +367,7 @@ function startGame() {
                     pasaArray.splice(0,1);
                     incorrects++;
                     count--;
-                    i++; 
+                    i++;
                     document.getElementById("answerId").value = '';
                     loop(); 
                     
