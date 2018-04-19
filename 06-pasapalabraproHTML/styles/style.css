@@ -327,11 +327,14 @@ p {
   }
 
 
+.form-group {
 
+  text-align: center;
+}
 
 
   .form {
-    width: 320px;
+    width: 90%;
   }
 
    
