@@ -143,6 +143,7 @@ function startGame() {
     var button2 = document.getElementById("btnValue2");
     var btnPas2 = document.getElementById("btnPas2");
     var btnStop2 = document.getElementById("btnStop2");
+    document.getElementById("countdowntimer").innerHTML = '130';
     divName.style.display = "none"; 
     startText.style.display = "none"; 
     circleContainer.style.display = "block"; 
@@ -154,6 +155,7 @@ function startGame() {
     button2.style.display = "none"; 
     btnPas2.style.display = "none";
     btnStop2.style.display = "none";
+    
 
     
     var corrects = [];
@@ -391,13 +393,18 @@ function startGame() {
         results.style.display = "block";
         timerText.style.display = "none";
         players.push({name: playerName, points: points});
-        document.getElementById('resultText').innerHTML = 'Game Over!! ' + playerName.toUpperCase() + '<br>' + 'Has fallado ' + incorrects + ' letras<br> Has acertado ' + points + ' letras ' + corrects + '<br>' + 'Tienes ' + points + ' puntos';
+        if(points == 1) {
+            document.getElementById('resultText').innerHTML = 'Game Over!! ' + playerName.toUpperCase() + '<br>' + 'Has fallado ' + incorrects + ' letras<br> Has acertado ' + points + ' letra - ' + corrects + '<br>' + 'Tienes ' + points + ' punto';
+        }else{
+            document.getElementById('resultText').innerHTML = 'Game Over!! ' + playerName.toUpperCase() + '<br>' + 'Has fallado ' + incorrects + ' letras<br> Has acertado ' + points + ' letras - ' + corrects + '<br>' + 'Tienes ' + points + ' puntos';
+        }
         var btnNewGame = document.getElementById("btnNewGame");
 
         btnNewGame.onclick = function() {
             results.style.display = "none";
             document.getElementById("answerId").value = '';
             document.getElementById("nome").value = '';
+            document.getElementById("countdowntimer").innerHTML = '130';
             inIt();
         }
 
@@ -441,11 +448,18 @@ function ranking() {
 
     var rankPoints = players.sort(sort_by('points', true, parseInt));   // Sort by price high to low
     var revRankPoints = rankPoints.reverse();
+    var puntos = ' puntos ';
+    
 
     var populateList = function (arr) {
         var str = '';
         for (var i = 0; i < arr.length; i++) {
-            str += '<li>' + arr[i].name + ' => ' + arr[i].points + ' puntos' + '</li>';
+            if(arr[i].points == 1) {
+                puntos = ' punto ';
+            }else{
+            puntos = ' puntos ';
+            }
+            str += '<li>' + arr[i].name + ' => ' + arr[i].points +  puntos  + '</li>';
         }
         return str;
     }
