@@ -459,7 +459,7 @@ function ranking() {
             }else{
             puntos = ' puntos ';
             }
-            str += '<li>' + arr[i].name + ' => ' + arr[i].points +  puntos  + '</li>';
+            str += '<li>' + arr[i].name + ' => ' + arr[i].points + puntos + '</li>';
         }
         return str;
     }
